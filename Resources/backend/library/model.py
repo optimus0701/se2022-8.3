@@ -37,6 +37,12 @@ class Cart(db.Model):
     count = db.Column(db.Integer)
     total = db.Column(db.Integer)
 
+    def __init__(self, username, pro_name, count, total):
+        self.username = username
+        self.pro_name = pro_name
+        self.count = count
+        self.total = total
+
 #class Notification(db.Model):
 #    content = db.Column(db.String(100))
 #    image = db.Column(db.String(100))
