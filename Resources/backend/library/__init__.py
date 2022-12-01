@@ -1,5 +1,6 @@
 from flask import Flask, request, Blueprint
 from .product.controller import products
+from .user.controller import users
 from .extension import db, ma
 from .model import User, Products, Product_type, Cart
 import os
@@ -13,4 +14,5 @@ def create_app(config_file="config.py"):
     with app.app_context():
         db.create_all()
     app.register_blueprint(products)
+    app.register_blueprint(users)
     return app

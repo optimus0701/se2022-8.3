@@ -23,13 +23,16 @@ class Products(db.Model):
     description = db.Column(db.String(500))
     price = db.Column(db.Integer, nullable = False)
     image = db.Column(db.String(100), nullable = False)
-
-    def __init__(self, pro_name, description, price, image, seller):
+    seller = db.Column(db.String(100), nullable = False,  primary_key = True)
+    number = db.Column(db.Integer, nullable = False)
+    def __init__(self,type_id, pro_name, description, price, image, seller, number):
+        self.type_id = type_id
         self.pro_name = pro_name
         self.description = description
         self.price = price
         self.image = image
         self.seller = seller
+        self.number = number
 
 class Cart(db.Model):
     username = db.Column(db.String(100),db.ForeignKey("user.username"), primary_key = True)
