@@ -1,14 +1,6 @@
 
 from .extension import db
 
-#class Category(db.Model):
-#    id = db.Column(db.Integer, primary_key=True)
-#    cate = db.Column(db.String(100))
-#
-#    def __init__(self, id, cate):
-#        self.id = id
-#        self.cate = cate
-
 class Product_type(db.Model):
     type_id = db.Column(db.Integer, primary_key = True)
     type_name = db.Column(db.String(100))
@@ -18,12 +10,12 @@ class Product_type(db.Model):
         self.type_name = type_name
 
 class Products(db.Model):
-    type_id = db.Column(db.Integer(), db.ForeignKey("product_type.type_id"))
+    type_id = db.Column(db.Integer(), db.ForeignKey("product_type.type_id"), nullable = False)
     pro_name = db.Column(db.String(100), nullable = False,  primary_key = True)
-    description = db.Column(db.String(500))
+    description = db.Column(db.String(5000))
     price = db.Column(db.Integer, nullable = False)
     image = db.Column(db.String(100), nullable = False)
-    seller = db.Column(db.String(100), nullable = False,  primary_key = True)
+    seller = db.Column(db.String(100), db.ForeignKey("user.username"), nullable = False, primary_key = True)
     number = db.Column(db.Integer, nullable = False)
     def __init__(self,type_id, pro_name, description, price, image, seller, number):
         self.type_id = type_id
@@ -33,27 +25,6 @@ class Products(db.Model):
         self.image = image
         self.seller = seller
         self.number = number
-
-class Cart(db.Model):
-    username = db.Column(db.String(100),db.ForeignKey("user.username"), primary_key = True)
-    pro_name = db.Column(db.String(100),db.ForeignKey("products.pro_name"), nullable = False, primary_key = True, )
-    count = db.Column(db.Integer)
-    total = db.Column(db.Integer)
-
-    def __init__(self, username, pro_name, count, total):
-        self.username = username
-        self.pro_name = pro_name
-        self.count = count
-        self.total = total
-
-#class Notification(db.Model):
-#    content = db.Column(db.String(100))
-#    image = db.Column(db.String(100))
-#
-#    def __init__(self, ID, content, image):
-#        self.ID = ID
-#        self.content = content
-#        self.image = image
 
 class User(db.Model):
     username = db.Column(db.String(100), primary_key = True)

@@ -1,5 +1,5 @@
 from flask import Blueprint
-from .services import add_product_service, get_product_by_pro_name_service, get_all_product_service, update_product_by_name_and_seller_service, delete_product_by_name_and_seller_service
+from .services import add_product_service, get_product_by_pro_name_service, get_all_product_service, update_product_by_name_and_seller_service, delete_product_by_name_and_seller_service, get_product_by_type_id_service, get_product_by_seller_service
 products = Blueprint("products", __name__)
 @products.route("/product-management/products", methods = ['GET'])
 def get_all_products():
@@ -20,3 +20,11 @@ def update_product(proname, seller):
 @products.route("/product-management/product/delete/<string:proname>/<string:seller>", methods = ['DELETE'])
 def delete_product(proname, seller):
     return delete_product_by_name_and_seller_service(proname, seller)
+
+@products.route("/product-management/product/get/<int:id>", methods = ['GET'])
+def get_product_by_id(id):
+    return get_product_by_type_id_service(id)
+
+@products.route("/product-management/product/get/<string:seller>", methods = ['GET'])
+def get_product_by_seller(seller):
+    return get_product_by_seller_service(seller)

@@ -1,6 +1,6 @@
 from library.extension import db
 from library.lb_ma import ProductSchema
-from library.model import Products
+from library.model import Products, Product_type, User
 from flask import request, jsonify
 import json
 
@@ -9,12 +9,12 @@ products_schema = ProductSchema(many=True)
 
 def add_product_service():
     data = request.json
-    if (data and ('type_id' in data) and ('pro_name' in data) and ('description' in data) and ('image' in data) and ('price' in data) and ('seller' in data) and ('number' in data)): 
+    if (data and ('type_id' in data) and ('pro_name' in data) and ('description' in data) and ('price' in data) and ('image' in data) and ('seller' in data) and ('number' in data)): 
         type_id = data['type_id']
         pro_name = data['pro_name']
         description = data['description']
-        image = data['image']
         price = data['price']
+        image = data['image']
         seller = data['seller']
         number = data['number']
 
@@ -67,7 +67,7 @@ def update_product_by_name_and_seller_service(pro_name,seller):
         return "Not found product"
 
 def delete_product_by_name_and_seller_service(pro_name, seller):
-    product = Products.query.get(username)
+    product = Products.query.get(pro_name, seller)
     if product:
         try:
             db.session.delete(product)
@@ -78,3 +78,17 @@ def delete_product_by_name_and_seller_service(pro_name, seller):
             return "Cannot delete product"
     else:
         return "Not found product"
+
+def get_product_by_type_id_service(id):
+    product = Products.query.join(Product_type).filter((Product_type.type_id) == id).all()
+    if product:
+        return products_schema.jsonify(product)
+    else:
+        return jsonify({"message": f"Not found product by {id}"}), 404
+
+def get_product_by_seller_service(seller):
+    product = Products.query.get(seller)
+    if product:
+        return products_schema.jsonify(product)
+    else:
+        return jsonify({"message": f"Not found product by {seller}"}), 404
