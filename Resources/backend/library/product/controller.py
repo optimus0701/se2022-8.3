@@ -1,5 +1,5 @@
 from flask import Blueprint
-from .services import add_product_service, get_product_by_pro_name_service, get_all_product_service, update_product_by_name_and_seller_service, delete_product_by_name_and_seller_service, get_product_by_type_id_service, get_product_by_seller_service
+from .services import add_product_service, get_product_by_pro_name_service, get_all_product_service, update_product_by_name_and_seller_service, delete_product_by_name_and_seller_service, get_product_by_type_name_service, get_product_by_seller_service
 products = Blueprint("products", __name__)
 @products.route("/product-management/products", methods = ['GET'])
 def get_all_products():
@@ -13,18 +13,18 @@ def get_product_by_pro_name(proname):
 def add_product():
     return add_product_service()
 
-@products.route("/product-management/product/update/<string:proname>/<string:seller>", methods = ['PUT'])
+@products.route("/product-management/product/update/<string:seller>/<string:proname>", methods = ['PUT'])
 def update_product(proname, seller):
     return update_product_by_name_and_seller_service(proname, seller)
 
-@products.route("/product-management/product/delete/<string:proname>/<string:seller>", methods = ['DELETE'])
-def delete_product(proname, seller):
-    return delete_product_by_name_and_seller_service(proname, seller)
+@products.route("/product-management/product/delete", methods =['PUT','DELETE'])
+def delete_product():
+    return delete_product_by_name_and_seller_service()
 
-@products.route("/product-management/product/get/<int:id>", methods = ['GET'])
-def get_product_by_id(id):
-    return get_product_by_type_id_service(id)
+@products.route("/product-management/product/get/type/<string:id>", methods = ['GET'])
+def get_product_by_type(id):
+    return get_product_by_type_name_service(id)
 
-@products.route("/product-management/product/get/<string:seller>", methods = ['GET'])
+@products.route("/product-management/product/get/seller/<string:seller>", methods = ['GET'])
 def get_product_by_seller(seller):
     return get_product_by_seller_service(seller)
