@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Navbar</a>
+  
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link {% if 'type_id' not in request.args%}active{% endif %}" href="/">Trang chu</a>
+        </li>
+        {% for c in categories %}
+
+        <li class="nav-item {% if 'type_id' in request.args and c.id == request.args.type_id|int %}active{% endif %}">
+          <a class="nav-link" href="{{ url_for('home', type_id=c.id) }}">{{ c.type_name }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </nav>
