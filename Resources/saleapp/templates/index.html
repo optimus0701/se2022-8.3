@@ -1,0 +1,31 @@
+{% extends 'layout/base.html' %}
+
+{% block title %} Trang chu {% endblock %}
+
+{% block content %} 
+<h1>
+    Chao mung den website ban hang truc tuyen
+</h1>
+<ul>    
+    <div class="container">
+        {% if products %}
+        <div class="row">
+            {% for p in products %}
+            <div class="col-md-3 col-xs-12">
+                <div class="card">
+                    <img class="card-img-top" src="{{ url_for('static', filename=p.image) }}" alt="p.name">
+                    <div class="card-body">
+                      <h4 class="card-title">{{ p.pro_name }}</h4>
+                      <p class="card-text">{{ p.price }} VND</p>
+                      <a href="#" class="btn btn-primary">Dat hang</a>
+                    </div>
+                  </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+            <p><i>Khong co san pham nao</i></p>
+        {% endif %}
+    </div>
+</ul>
+{% endblock %}
