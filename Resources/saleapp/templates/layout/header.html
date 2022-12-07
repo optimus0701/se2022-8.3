@@ -19,6 +19,13 @@
           <a class="nav-link" href="{{ url_for('home', type_id=c.id) }}">{{ c.type_name }}</a>
         </li>
         {% endfor %}
+        <li class="nav-item">
+          <a class="nav-link text-danger" href="{{ url_for('user_register') }}">Dang Ky</a>
+        </li>
       </ul>
     </div>
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" name="keyword" type="text" placeholder="Nhập từ khoá....">
+      <button class="btn btn-success" type="submit">Tìm kiếm</button>
+    </form>
   </nav>
