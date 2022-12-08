@@ -19,9 +19,28 @@
           <a class="nav-link" href="{{ url_for('home', type_id=c.id) }}">{{ c.type_name }}</a>
         </li>
         {% endfor %}
+        {% if current_user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link text-danger" href="{{ url_for('home') }}">
+              {% if current_user.avatar %}
+                <img src="{{ current_user.avatar }}" class="rounded-circle" width="30" alt="{{ current_user.name }}">
+              {% else %}
+                <img src="{{ url_for('static', filename='images/default.png') }}" class="rounded-circle" width="30" alt="{{ current_user.name }}">
+              {% endif %}
+              {{ current_user.name }}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-success" href="{{ url_for('user_signout') }}">Dang xuat</a>
+        </li>
+        {% else %}
         <li class="nav-item">
           <a class="nav-link text-danger" href="{{ url_for('user_register') }}">Dang Ky</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link text-success" href="{{ url_for('user_signin') }}">Dang Nhap</a>
+        </li>
+        {% endif %}
       </ul>
     </div>
     <form class="form-inline">

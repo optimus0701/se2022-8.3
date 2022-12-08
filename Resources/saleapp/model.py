@@ -1,6 +1,7 @@
 from sqlalchemy.orm import relationship
 from __init__ import db, app
 from enum import Enum as UserEnum
+from flask_login import UserMixin
 
 class BaseModel(db.Model):
     __abstract__ = True
@@ -16,7 +17,7 @@ class UserRole(UserEnum):
     ADMIN = 1
     USER = 2
     SELLER = 3
-class User(BaseModel):
+class User(BaseModel, UserMixin):
     name = db.Column(db.String(100), nullable = False)
     username = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100), nullable = False)
@@ -34,7 +35,7 @@ class Products(BaseModel):
     description = db.Column(db.String(5000))
     price = db.Column(db.Integer, nullable = False)
     image = db.Column(db.String(100), nullable = False)
-    seller = db.Column(db.String(100), db.ForeignKey(User.name), nullable = False)
+    seller = db.Column(db.String(100), db.ForeignKey(User.username), nullable = False)
     number = db.Column(db.Integer, nullable = False)
     type_id = db.Column(db.Integer(), db.ForeignKey(Category.id), nullable = False)
 
