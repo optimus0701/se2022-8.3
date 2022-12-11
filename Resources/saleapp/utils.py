@@ -1,6 +1,7 @@
 import json, os
 from __init__ import app, db
-from model import Category, Products, User
+from model import Category, Products, User, Receipt, ReceiptDetail
+from flask_login import current_user
 import hashlib
 
 def read_json(path):
@@ -46,3 +47,26 @@ def check_login(username, password):
 
 def get_user_by_id(user_id):
     return User.query.get(user_id)
+
+def add_receipt(cart):
+    if cart:
+        receipt = Receipt(user=current_user)
+        db.session.add(receipt)
+
+        for c in cart.values():
+            d = ReceiptDetail(receipt=receipt, product_id=c['id'], quantity=c['quantity'], unit_price=c['price'])
+            db.session.add(d)
+        db.session.commit()
+def count_cart(cart):
+    total_quantity, total_amount = 0, 0
+
+    if cart:
+        for c in cart.values():
+            total_quantity += int(c['quantity'])
+            total_amount += int(c['quantity']*c['price'])
+
+    return {
+        'total_quantity': (total_quantity),
+        'total_amount': (total_amount)
+    }
+

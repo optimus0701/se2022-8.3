@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <!-- Brand -->
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#"></a>
   
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link {% if 'type_id' not in request.args%}active{% endif %}" href="/">Trang chu</a>
+          <a class="nav-link {% if 'type_id' not in request.args%}active{% endif %}" href="/">Trang chủ</a>
         </li>
         {% for c in categories %}
 
@@ -31,16 +31,21 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-success" href="{{ url_for('user_signout') }}">Dang xuat</a>
+          <a class="nav-link text-success" href="{{ url_for('user_signout') }}">Đăng xuất</a>
         </li>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link text-danger" href="{{ url_for('user_register') }}">Dang Ky</a>
+          <a class="nav-link text-danger" href="{{ url_for('user_register') }}">Đăng ký</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-success" href="{{ url_for('user_signin') }}">Dang Nhap</a>
+          <a class="nav-link text-success" href="{{ url_for('user_signin') }}">Đăng nhập</a>
         </li>
         {% endif %}
+        <li class="nav-item">
+          <a class="nav-link text-success" href="{{ url_for('cart') }}">
+            Giỏ hàng <span class="badge badge-info" id="cartCounter">{{ cart_stats.total_quantity }}</span>
+          </a>
+        </li>
       </ul>
     </div>
     <form class="form-inline">

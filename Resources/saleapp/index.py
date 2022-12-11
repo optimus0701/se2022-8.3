@@ -1,6 +1,6 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, session, jsonify
 from __init__ import app, login
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, login_required
 import utils
 import math
 import cloudinary.uploader
@@ -52,7 +52,8 @@ def user_signin():
         user = utils.check_login(username=username, password=password)
         if user:
             login_user(user=user)
-            return redirect(url_for('home'))
+            next = request.args.get('next', 'home')
+            return redirect(url_for(next))
         else:
             err_msg= 'Username hoac Password khong dung!!'
     return render_template('login.html', err_msg=err_msg)
@@ -62,18 +63,52 @@ def user_signout():
     logout_user()
     return redirect(url_for('user_signin'))
 
+@app.route('/cart')
 
+def cart():
+    return render_template('cart.html', stats=utils.count_cart(session.get('cart')))
+
+@app.route("/api/add-cart", methods=['POST'])
+def add_to_cart():
+    data=request.json
+    id= str(data.get('id'))
+    pro_name= data.get('pro_name')
+    price= data.get('price')
+
+    cart = session.get('cart')
+    if not cart:
+        cart={}
+    if id in cart:
+        cart[id]['quantity']=cart[id]['quantity'] + 1
+    else:
+        cart[id]= {
+            'id': id,
+            'pro_name': pro_name,
+            'price': price,
+            'quantity': 1
+        }
+    session['cart'] = cart
+
+    return jsonify(utils.count_cart(cart))
 
 @login.user_loader
 def user_load(user_id):
     return utils.get_user_by_id(user_id)
 
-
-
+@app.route("/api/pay", methods=['POST'])
+@login_required
+def pay():
+    try:
+        utils.add_receipt(session.get('cart'))
+        del session['cart']
+    except:
+        return jsonify({'code': 400})
+    return jsonify({'code': 200})
 @app.context_processor
 def common_response():
     return {
-        'categories': utils.load_categories()
+        'categories': utils.load_categories(),
+        'cart_stats': utils.count_cart(session.get('cart'))
     }
 
 @app.route("/products")
