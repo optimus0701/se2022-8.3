@@ -1,6 +1,7 @@
 from flask import render_template, request, redirect, url_for, session, jsonify
 from __init__ import app, login
 from flask_login import login_user, logout_user, login_required
+from model import UserRole
 import utils
 import math
 import cloudinary.uploader
@@ -58,6 +59,17 @@ def user_signin():
             err_msg= 'Username hoac Password khong dung!!'
     return render_template('login.html', err_msg=err_msg)
 
+
+@app.route("/admin-login", methods=['POST'])
+def signin_admin():
+    username = request.form.get('username')
+    password = request.form.get('password')
+
+    user = utils.check_login_admin(username=username, password=password, role=UserRole.ADMIN)
+    if user:
+        login_user(user=user)
+    return redirect('/admin')
+    
 @app.route("/user-logout")
 def user_signout():
     logout_user()

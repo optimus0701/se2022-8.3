@@ -1,6 +1,6 @@
 import json, os
 from __init__ import app, db
-from model import Category, Products, User, Receipt, ReceiptDetail
+from model import Category, Products, User, Receipt, ReceiptDetail, UserRole
 from flask_login import current_user
 import hashlib
 
@@ -45,6 +45,13 @@ def check_login(username, password):
 
         return User.query.filter(User.username.__eq__(username.strip()), User.password.__eq__(password)).first()
 
+def check_login_admin(username, password, role=UserRole.ADMIN):
+    if username and password:
+        password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
+
+        return User.query.filter(User.username.__eq__(username.strip()), User.password.__eq__(password), User.user_role.__eq__(role)).first()
+
+
 def get_user_by_id(user_id):
     return User.query.get(user_id)
 
@@ -63,7 +70,7 @@ def count_cart(cart):
     if cart:
         for c in cart.values():
             total_quantity += int(c['quantity'])
-            total_amount += int(c['quantity']*c['price'])
+            total_amount += int(c['quantity'])*int(c['price'])
 
     return {
         'total_quantity': (total_quantity),
