@@ -1,6 +1,6 @@
-from flask import render_template, request, redirect, url_for, session, jsonify
+from flask import render_template, request, redirect, url_for, session, jsonify, abort
 from __init__ import app, login
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 from model import UserRole
 import utils
 import math
@@ -65,11 +65,18 @@ def signin_admin():
     username = request.form.get('username')
     password = request.form.get('password')
 
-    user = utils.check_login_admin(username=username, password=password, role=UserRole.ADMIN)
+    user = utils.check_login(username=username, password=password, role=UserRole.ADMIN)
     if user:
         login_user(user=user)
     return redirect('/admin')
-    
+
+@app.route('/admin')
+def admin_dashboard():
+    # prevent non-admins from accessing the page
+    if current_user.is_authenticated and not (current_user.user_role == UserRole.ADMIN):
+        abort(403)
+    return render_template('admin/index.html')
+
 @app.route("/user-logout")
 def user_signout():
     logout_user()
@@ -127,7 +134,6 @@ def common_response():
 def product_list():
     products = utils.load_products()
     return render_template('products.html', products = products)
-
 
 if __name__ == "__main__":
     from admin import *

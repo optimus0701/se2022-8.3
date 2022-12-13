@@ -9,7 +9,7 @@ class BaseModel(db.Model):
 
 class Category(BaseModel):
     type_name = db.Column(db.String(100))
-    products = relationship('Products',backref='category', lazy=True)
+    products = relationship('Products',backref='category', lazy='dynamic')
     
     def __str__(self):
         return self.type_name
@@ -24,9 +24,9 @@ class User(BaseModel, UserMixin):
     avatar = db.Column(db.String(100))
     email = db.Column(db.String(100))
     active = db.Column(db.Boolean, default = True)
-    user_role = db.Column(db.String(100), default=UserRole.USER)
-    products = relationship('Products',backref='Seller', lazy=True)
-    receipts = relationship('Receipt', backref='user', lazy=True)
+    user_role = db.Column(db.Enum(UserRole), default=UserRole.USER)
+    products = relationship('Products',backref='Seller', lazy='dynamic')
+    receipts = relationship('Receipt', backref='user', lazy='dynamic')
     
     def __str__(self):
         return self.name
@@ -39,7 +39,7 @@ class Products(BaseModel):
     seller = db.Column(db.String(100), db.ForeignKey(User.username), nullable = False)
     number = db.Column(db.Integer, nullable = False)
     type_id = db.Column(db.Integer(), db.ForeignKey(Category.id), nullable = False)
-    receipy_details = relationship('ReceiptDetail', backref='product', lazy=True)
+    receipy_details = relationship('ReceiptDetail', backref='product', lazy='dynamic')
 
 
     def __str__(self):
