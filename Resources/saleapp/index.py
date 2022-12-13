@@ -70,12 +70,6 @@ def signin_admin():
         login_user(user=user)
     return redirect('/admin')
 
-@app.route('/admin')
-def admin_dashboard():
-    # prevent non-admins from accessing the page
-    if current_user.is_authenticated and not (current_user.user_role == UserRole.ADMIN):
-        abort(403)
-    return render_template('admin/index.html')
 
 @app.route("/user-logout")
 def user_signout():

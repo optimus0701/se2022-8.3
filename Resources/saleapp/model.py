@@ -2,6 +2,7 @@ from sqlalchemy.orm import relationship
 from __init__ import db, app
 from enum import Enum as UserEnum
 from flask_login import UserMixin
+import hashlib
 
 class BaseModel(db.Model):
     __abstract__ = True
