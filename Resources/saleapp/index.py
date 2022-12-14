@@ -60,7 +60,7 @@ def user_signin():
     return render_template('login.html', err_msg=err_msg)
 
 
-@app.route("/admin-login", methods=['POST'])
+@app.route("/admin-login", methods=['POST','GET'])
 def signin_admin():
     username = request.form.get('username')
     password = request.form.get('password')
@@ -68,6 +68,7 @@ def signin_admin():
     user = utils.check_login(username=username, password=password, role=UserRole.ADMIN)
     if user:
         login_user(user=user)
+        
     return redirect('/admin')
 
 

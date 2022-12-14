@@ -1,16 +1,24 @@
 from __init__ import app, db
-from flask_admin import Admin, BaseView, expose
+from flask_admin import Admin, BaseView, AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
 from model import Category, Products, User, UserRole
 from flask_login import current_user, logout_user
-from flask import redirect, url_for, abort
+from flask import redirect, url_for, render_template, abort, request
 from wtforms import PasswordField
 import hashlib
 
-admin = Admin(app=app, name="Administration", template_mode='bootstrap4')
 
+class MyAdminIndexView(AdminIndexView):
+    @expose('/')
+    def index(self):
+        if not current_user.is_authenticated:
+            return redirect(url_for('signin_admin'))
 
-    
+        if current_user.user_role == UserRole.ADMIN:
+            return super(MyAdminIndexView,self).index()
+        else:
+            return redirect(url_for('home'))
+
 
 class AuthenticatedModelView(ModelView):
 
@@ -40,6 +48,8 @@ class LogoutView(BaseView):
 
     def is_accessible(self):
         return current_user.is_authenticated
+
+admin = Admin(app=app, name="Administration", index_view=MyAdminIndexView(), template_mode='bootstrap4')
 
 admin.add_view(CategoryView(Category, db.session, name='Danh mục'))
 admin.add_view(ProductView(Products, db.session, name='Sản phẩm'))
