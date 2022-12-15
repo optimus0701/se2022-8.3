@@ -39,7 +39,7 @@ def add_user(name, username, password, **kwargs):
     db.session.add(user)
     db.session.commit()
 
-def check_login(username, password, role=UserRole.ADMIN):
+def check_login(username, password, role=UserRole.USER):
     if username and password:
         password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
 

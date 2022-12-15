@@ -3,7 +3,7 @@ from flask_admin import Admin, BaseView, AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
 from model import Category, Products, User, UserRole
 from flask_login import current_user, logout_user
-from flask import redirect, url_for, render_template, abort, request
+from flask import redirect, url_for, render_template, abort
 from wtforms import PasswordField
 import hashlib
 
@@ -12,12 +12,13 @@ class MyAdminIndexView(AdminIndexView):
     @expose('/')
     def index(self):
         if not current_user.is_authenticated:
-            return redirect(url_for('signin_admin'))
+            return render_template('admin/login_admin.html')
 
         if current_user.user_role == UserRole.ADMIN:
             return super(MyAdminIndexView,self).index()
         else:
-            return redirect(url_for('home'))
+            return abort(403)
+                    #redirect(url_for('home'))
 
 
 class AuthenticatedModelView(ModelView):
@@ -25,6 +26,13 @@ class AuthenticatedModelView(ModelView):
     def is_accessible(self):
         return current_user.is_authenticated and current_user.user_role == UserRole.ADMIN
     
+class AdminPasswordField(PasswordField):
+
+    def process_formdata(self, valuelist):
+        if valuelist and valuelist[0] != '':
+            self.data = str(hashlib.md5(valuelist[0].strip().encode('utf-8')).hexdigest())
+        elif self.data is None:
+            self.data = ''    
 class CategoryView(AuthenticatedModelView):
     form_excluded_columns=['products']
 class ProductView(AuthenticatedModelView):
@@ -38,7 +46,7 @@ class UserView(AuthenticatedModelView):
     details_modal=True
     form_excluded_columns=['products','receipts']
     form_overrides = {
-        'password': PasswordField,
+        'password': AdminPasswordField,
     }
 class LogoutView(BaseView):
     @expose('/')

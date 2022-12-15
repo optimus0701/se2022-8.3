@@ -59,3 +59,7 @@ class ReceiptDetail(db.Model):
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
+        pas=str(hashlib.md5('123456'.strip().encode('utf-8')).hexdigest())
+        user=User(name="ADMIN", username='admin', password=pas, user_role=UserRole.ADMIN)
+        db.session.add(user)
+        db.session.commit()

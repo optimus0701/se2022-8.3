@@ -21,7 +21,7 @@
         <td>{{ c.price }}</td>
         <td>
             <div class="form-group">
-                <input type="number" min="1" value="{{ c.quantity }}" class="form-control">
+                <input type="number" min="1" onblur="updateCart('{{ c.id }}', this)" value="{{ c.quantity }}" class="form-control">
             </div>
         </td>
         <td>
@@ -31,8 +31,8 @@
     {% endfor %}
 </table>
 <div class="alert alert-info">
-    <h5>Tổng sản phẩm: {{ stats.total_quantity }}</h5>
-    <h5>Tổng tiền: {{ "{:,.1f}".format(stats.total_amount) }} VND</h5>
+    <h5>Tổng sản phẩm: <span class="cart-counter">{{ stats.total_quantity }}</span></h5>
+    <h5>Tổng tiền: <span id="total_amount">{{ "{:,.1f}".format(stats.total_amount) }}</span> VND</h5>
 </div>
 {% if current_user.is_authenticated %}
 <input type="button" value="Thanh toán" class="btn btn-success" onclick="pay()">

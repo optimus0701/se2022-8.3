@@ -105,6 +105,20 @@ def add_to_cart():
 
     return jsonify(utils.count_cart(cart))
 
+@app.route('/api/update-cart', methods=['PUT'])
+def update_cart():
+    data = request.json
+    id = str(data.get('id'))
+    quantity = data.get('quantity')
+
+    cart = session.get('cart')
+    if cart and id in cart:
+        cart[id]['quantity'] = quantity
+        session['cart']=cart
+    
+    return jsonify(utils.count_cart(cart))
+
+
 @login.user_loader
 def user_load(user_id):
     return utils.get_user_by_id(user_id)
