@@ -78,7 +78,6 @@ def user_signout():
     return redirect(url_for('user_signin'))
 
 @app.route('/cart')
-
 def cart():
     return render_template('cart.html', stats=utils.count_cart(session.get('cart')))
 
@@ -118,7 +117,14 @@ def update_cart():
     
     return jsonify(utils.count_cart(cart))
 
+@app.route('/api/delete-cart/<product_id>', methods=['DELETE'])
+def delete_cart(product_id):
+    cart = session.get('cart')
 
+    if cart and product_id in cart:
+        del cart[product_id]
+        session['cart'] = cart
+    return jsonify(utils.count_cart(cart))
 @login.user_loader
 def user_load(user_id):
     return utils.get_user_by_id(user_id)

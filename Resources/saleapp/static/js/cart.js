@@ -16,9 +16,9 @@ function addToCart(id, pro_name, price) {
         return res.json()
     }).then(function(data) {
         console.info(data)
-        let counter = document.getElementsByClassName('cart-counter')
+        let counter = document.getElementsByClassName('cart_counter')
         for (let i=0; i<counter.length;i++)
-            counter.innerText = data.total_quantity
+            counter[i].innerText = data.total_quantity
     }).catch(function(err) {
         console.error(err)
     })
@@ -38,7 +38,7 @@ function pay() {
 
 function updateCart(id, obj) {
     fetch('/api/update-cart', {
-        method: 'put',
+        method: 'PUT',
         body: JSON.stringify({
             'id': id,
             'quantity': parseInt(obj.value)
@@ -46,12 +46,42 @@ function updateCart(id, obj) {
         headers: {
             'Content-Type': 'application/json'
         }
-    }).then(res => res.json()).then(data => {
-        let counter = document.getElementsByClassName('cart-counter')
+    }).then(function(res) {
+        console.info(res)
+        return res.json()
+    }).then(function(data) {
+        console.info(data)
+        let counter = document.getElementsByClassName('cart_counter')
         for (let i=0; i<counter.length;i++)
-            counter.innerText = data.total_quantity
+            counter[i].innerText = data.total_quantity
 
-        let amount = document.getElementById('total_amount')
+        let amount = document.getElementById('total-amount')
         amount.innerText = new Intl.NumberFormat().format(data.total_amount)
     })
+}
+
+function deleteCart(id) {
+    if (confirm("Bạn muốn xóa sản phẩm này?") == true) {
+        fetch('/api/delete-cart/'+ id, {
+            method: 'DELETE',
+            
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function(res) {
+            console.info(res)
+            return res.json()
+        }).then(function(data) {
+            console.info(data)
+            let counter = document.getElementsByClassName('cart_counter')
+            for (let i=0; i<counter.length;i++)
+                counter[i].innerText = data.total_quantity
+    
+            let amount = document.getElementById('total-amount')
+            amount.innerText = new Intl.NumberFormat().format(data.total_amount)
+
+            let e = document.getElementById("product" + id)
+            e.style.display = "none"
+        }).catch(err => console.error(err))
+    }
 }

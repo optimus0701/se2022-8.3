@@ -59,7 +59,8 @@ def add_receipt(cart):
             db.session.add(d)
         db.session.commit()
 def count_cart(cart):
-    total_quantity, total_amount = 0, 0
+    total_quantity = 0
+    total_amount = 0
 
     if cart:
         for c in cart.values():
