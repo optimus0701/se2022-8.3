@@ -39,13 +39,7 @@ def add_user(name, username, password, **kwargs):
     db.session.add(user)
     db.session.commit()
 
-def check_login(username, password):
-    if username and password:
-        password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
-
-        return User.query.filter(User.username.__eq__(username.strip()), User.password.__eq__(password)).first()
-
-def check_login_admin(username, password, role=UserRole.ADMIN):
+def check_login(username, password, role=UserRole.USER):
     if username and password:
         password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
 
@@ -65,7 +59,8 @@ def add_receipt(cart):
             db.session.add(d)
         db.session.commit()
 def count_cart(cart):
-    total_quantity, total_amount = 0, 0
+    total_quantity = 0
+    total_amount = 0
 
     if cart:
         for c in cart.values():

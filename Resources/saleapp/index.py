@@ -1,6 +1,6 @@
-from flask import render_template, request, redirect, url_for, session, jsonify
+from flask import render_template, request, redirect, url_for, session, jsonify, abort
 from __init__ import app, login
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 from model import UserRole
 import utils
 import math
@@ -60,23 +60,24 @@ def user_signin():
     return render_template('login.html', err_msg=err_msg)
 
 
-@app.route("/admin-login", methods=['POST'])
+@app.route("/admin-login", methods=['POST','GET'])
 def signin_admin():
     username = request.form.get('username')
     password = request.form.get('password')
 
-    user = utils.check_login_admin(username=username, password=password, role=UserRole.ADMIN)
+    user = utils.check_login(username=username, password=password, role=UserRole.ADMIN)
     if user:
         login_user(user=user)
+        
     return redirect('/admin')
-    
+
+
 @app.route("/user-logout")
 def user_signout():
     logout_user()
     return redirect(url_for('user_signin'))
 
 @app.route('/cart')
-
 def cart():
     return render_template('cart.html', stats=utils.count_cart(session.get('cart')))
 
@@ -103,6 +104,27 @@ def add_to_cart():
 
     return jsonify(utils.count_cart(cart))
 
+@app.route('/api/update-cart', methods=['PUT'])
+def update_cart():
+    data = request.json
+    id = str(data.get('id'))
+    quantity = data.get('quantity')
+
+    cart = session.get('cart')
+    if cart and id in cart:
+        cart[id]['quantity'] = quantity
+        session['cart']=cart
+    
+    return jsonify(utils.count_cart(cart))
+
+@app.route('/api/delete-cart/<product_id>', methods=['DELETE'])
+def delete_cart(product_id):
+    cart = session.get('cart')
+
+    if cart and product_id in cart:
+        del cart[product_id]
+        session['cart'] = cart
+    return jsonify(utils.count_cart(cart))
 @login.user_loader
 def user_load(user_id):
     return utils.get_user_by_id(user_id)
@@ -127,7 +149,6 @@ def common_response():
 def product_list():
     products = utils.load_products()
     return render_template('products.html', products = products)
-
 
 if __name__ == "__main__":
     from admin import *
