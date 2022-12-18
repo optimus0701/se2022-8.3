@@ -25,6 +25,7 @@ export function SignUpScreen({ navigation }) {
       <Button
         style={styles.button}
         title='SignUp' />
+      <Text style={styles.text}>Back</Text>
     </View>
   );
 }

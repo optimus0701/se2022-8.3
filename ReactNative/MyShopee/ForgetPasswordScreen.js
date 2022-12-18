@@ -12,7 +12,7 @@ export function ForgetPasswordScreen({ navigation }) {
       <Button
         style={styles.button}
         title='Send Request' />
-      <Text style={styles.text}>Login</Text>
+      <Text style={styles.text}>Back</Text>
       </View>
   );
 }
