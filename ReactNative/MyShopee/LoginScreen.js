@@ -1,5 +1,7 @@
 import { Button, Image, StyleSheet, Text, TextInput, View } from 'react-native';
 
+
+
 export function LoginScreen({ navigation }) {
     return (
       <View style={styles.main}>
@@ -16,13 +18,17 @@ export function LoginScreen({ navigation }) {
         <Button 
           style={styles.button}
           title='Login'/>
-        <Text style={styles.text} onPress={() => navigation.navigate('ForgetPassword')}>Forget Password</Text>
-        <Text style={styles.text} onPress={() => navigation.navigate('SignUp')}>Do not have account? sign up!</Text>
+        <Text style={styles.text}
+         onPress={() => changeScreen(navigation, 'ForgetPassword')}>Forget Password</Text>
+        <Text style={styles.text}
+         onPress={() => changeScreen(navigation, 'SignUp')} >Do not have account? sign up!</Text>
       </View>
     );
   }
 
-
+function changeScreen(navigation, screen) {
+  navigation.navigate(screen);
+}
 
 const styles = StyleSheet.create({
     main: {
