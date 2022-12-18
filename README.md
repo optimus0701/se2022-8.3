@@ -1,1 +1,6 @@
-# se2022-8.3
+# Ứng dụng Shopee Fake
+Ứng dụng sử dụng React Native làm frond-end, python và sql làm back-end
+# Tính năng
+coming soon...
+# Các bước cài đặt
+coming soon...
