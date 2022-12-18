@@ -1,33 +1,47 @@
-import { Button, Image, StyleSheet, Text, TextInput, View } from 'react-native';
+import React from 'react';
+import { Button, Image, StyleSheet, Text, TextInput, ToastAndroid, View } from 'react-native';
 
 
 export function SignUpScreen({ navigation }) {
+  const [email, onChangeEmail] = React.useState('');
+  const [username, onChangeUsername] = React.useState('');
+  const [password, onChangePassword] = React.useState('');
+  const [passwordAgain, onChangePasswordAgain] = React.useState('');
   return (
     <View style={styles.main}>
       <Image style={styles.image} source={require('./assets/profile.png')} />
 
       <TextInput
         style={styles.input}
-        placeholder="Email" />
+        placeholder="Email"
+        onChangeText={onChangeEmail} />
 
       <TextInput
         style={styles.input}
-        placeholder="Username" />
+        placeholder="Username"
+        onChangeText={onChangeUsername} />
 
       <TextInput
         style={styles.input}
-        placeholder="Password" />
+        placeholder="Password"
+        onChangeText={onChangePassword} />
 
       <TextInput
         style={styles.input}
-        placeholder="Password Again" />
+        placeholder="Password Again"
+        onChangeText={onChangePasswordAgain} />
 
       <Button
         style={styles.button}
-        title='SignUp' />
+        title='SignUp'
+        onPress={() => signUp(email, username, password, passwordAgain)} />
       <Text style={styles.text}>Back</Text>
     </View>
   );
+}
+
+function signUp(email, username, password, passwordAgain) {
+  console.log('sign up');
 }
 
 

@@ -1,20 +1,27 @@
 import { Button, Image, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export function ForgetPasswordScreen({ navigation }) {
+  const [email, onChangeEmail] = React.useState('');
   return (
     <View style={styles.main}>
       <Image style={styles.image} source={require('./assets/profile.png')} />
 
       <TextInput
         style={styles.input}
-        placeholder="Email" />
+        placeholder="Email"
+        onChangeText={onChangeEmail} />
 
       <Button
         style={styles.button}
-        title='Send Request' />
+        title='Send Request'
+        onPress={() => sendRequest(email)} />
       <Text style={styles.text}>Back</Text>
       </View>
   );
+}
+
+function sendRequest(email) {
+  console.log('send request')
 }
 
 const styles = StyleSheet.create({
