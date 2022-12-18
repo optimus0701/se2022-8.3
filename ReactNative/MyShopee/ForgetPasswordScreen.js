@@ -1,3 +1,4 @@
+import React from 'react';
 import { Button, Image, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export function ForgetPasswordScreen({ navigation }) {
