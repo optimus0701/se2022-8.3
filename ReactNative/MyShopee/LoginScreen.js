@@ -16,10 +16,13 @@ export function LoginScreen({ navigation }) {
         <Button 
           style={styles.button}
           title='Login'/>
-        
+        <Text style={styles.text} onPress={() => navigation.navigate('ForgetPassword')}>Forget Password</Text>
+        <Text style={styles.text} onPress={() => navigation.navigate('SignUp')}>Do not have account? sign up!</Text>
       </View>
     );
   }
+
+
 
 const styles = StyleSheet.create({
     main: {
@@ -41,9 +44,12 @@ const styles = StyleSheet.create({
     },
     image: {
       marginTop: 10,
-      marginBottom: 130,
+      marginBottom: 120,
       width: 200,
       height: 200,
+    },
+    text: {
+      marginTop: 20,
     }
   });
   
