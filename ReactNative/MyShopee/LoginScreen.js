@@ -9,7 +9,7 @@ export function LoginScreen({ navigation }) {
         
         <TextInput
           style={styles.input}
-          placeholder="Username"/>
+          placeholder="Email"/>
           
         <TextInput
           style={styles.input}
