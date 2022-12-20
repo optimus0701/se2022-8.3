@@ -6,7 +6,7 @@ export function SignUpScreen({ navigation }) {
   const [email, onChangeEmail] = React.useState('');
   const [username, onChangeUsername] = React.useState('');
   const [password, onChangePassword] = React.useState('');
-  const [passwordAgain, onChangePasswordAgain] = React.useState('');
+  const [passwordAgain, onChangeConfirmPassword] = React.useState('');
   return (
     <View style={styles.main}>
       <Image style={styles.image} source={require('./assets/profile.png')} />
@@ -28,8 +28,8 @@ export function SignUpScreen({ navigation }) {
 
       <TextInput
         style={styles.input}
-        placeholder="Password Again"
-        onChangeText={onChangePasswordAgain} />
+        placeholder="Confirm Password"
+        onChangeText={onChangeConfirmPassword} />
 
       <Button
         style={styles.button}
@@ -40,7 +40,7 @@ export function SignUpScreen({ navigation }) {
   );
 }
 
-function signUp(email, username, password, passwordAgain) {
+function signUp(email, username, password, confirmPassword) {
   console.log('sign up');
 }
 
