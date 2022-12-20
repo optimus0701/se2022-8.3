@@ -150,6 +150,16 @@ def product_list():
     products = utils.load_products()
     return render_template('products.html', products = products)
 
+
+
+@app.route("/test")
+def test():
+    if(1 > 0) {
+        return true;
+    } else {
+        return fasle;
+    }
+
 if __name__ == "__main__":
     from admin import *
 
