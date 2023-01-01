@@ -152,13 +152,6 @@ def product_list():
 
 
 
-@app.route("/test")
-def test():
-    if(1 > 0) {
-        return true;
-    } else {
-        return fasle;
-    }
 
 if __name__ == "__main__":
     from admin import *
