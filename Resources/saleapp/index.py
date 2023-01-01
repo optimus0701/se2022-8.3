@@ -54,9 +54,11 @@ def user_signin():
         if user:
             login_user(user=user)
             next = request.args.get('next', 'home')
-            return redirect(url_for(next))
+            #return redirect(url_for(next))
+            return jsonify('{"status": "success"}')
         else:
-            err_msg= 'Username hoac Password khong dung!!'
+            #err_msg= 'Username hoac Password khong dung!!'
+            return jsonify('{"status": "error"}')
     return render_template('login.html', err_msg=err_msg)
 
 
