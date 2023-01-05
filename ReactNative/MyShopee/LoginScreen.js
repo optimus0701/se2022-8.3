@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Image, StyleSheet, Text, TextInput, View } from 'react-native';
 import axios from 'axios';
 
@@ -17,7 +17,7 @@ export function LoginScreen({ navigation }) {
 
       <TextInput
         style={styles.input}
-        placeholder="Password" 
+        placeholder="Password"
         onChangeText={onChangePassword} />
 
       <Button
@@ -34,18 +34,22 @@ export function LoginScreen({ navigation }) {
 }
 
 
-
 function login(email, password) {
   console.log('abc1');
-  axios.post('http://192.168.43.4:5000/user-login', {
-    username: "vido0701@gmail.com",
-    password: "03112002"
-  }).then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+
+  const res = axios.post(
+  "https://ea83-59-153-237-28.ap.ngrok.io/user-login",
+  {
+    username: 'vido0701',
+    password: '03112002',
+  },
+  {
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    }
+  }
+)
+  console.log(res.data);
   console.log('abc2');
 }
 
