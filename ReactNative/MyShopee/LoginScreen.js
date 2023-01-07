@@ -12,7 +12,7 @@ export function LoginScreen({ navigation }) {
 
       <TextInput
         style={styles.input}
-        placeholder="Email"
+        placeholder="Username"
         onChangeText={onChangeEmail} />
 
       <TextInput
@@ -34,23 +34,33 @@ export function LoginScreen({ navigation }) {
 }
 
 
-function login(email, password) {
-  console.log('abc1');
+async function postLogin(username, password) {
+  const url = 'https://08ec-59-153-254-226.ap.ngrok.io/user-login';
+  const formdata = new FormData();
+  formdata.append('username', username);
+  formdata.append('password', password);
 
-  const res = axios.post(
-  "https://ea83-59-153-237-28.ap.ngrok.io/user-login",
-  {
-    username: 'vido0701',
-    password: '03112002',
-  },
-  {
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    }
-  }
-)
-  console.log(res.data);
-  console.log('abc2');
+  const headers = {
+      accept: 'application/json',
+      'content-type': 'multipart/form-data',
+  };
+
+  const opts = {
+      method: 'POST',
+      url: url,
+      headers: headers,
+      data: formdata,
+  };
+  return await axios.request(opts);
+}
+
+function login(email, password) {
+  postLogin(email, password)
+    .then((data) => {
+      const res =  JSON.parse(data.data);
+      console.log(res.status);
+    })
+    .catch((reason) => console.log("Message: " + reason.message));
 }
 
 function changeScreen(navigation, screen) {
