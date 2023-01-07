@@ -34,11 +34,11 @@ def user_register():
                     res = cloudinary.uploader.upload(avatar)
                     avatar_path = res['secure_url']
                 utils.add_user(name=name, username=username, password=password, email=email, avatar=avatar_path)
-                return redirect(url_for('user_signin'))
+                return jsonify('{"status": "success"}')
             else:
-                err_msg='Mat khau khong khop!!'
+                return jsonify('{"status": "error"}')
         except Exception as ex:
-            err_msg='Loi: ' + str(ex)
+            return jsonify('{"status": "error"}')
             
     
     return render_template('register.html', err_msg=err_msg)
@@ -53,11 +53,8 @@ def user_signin():
         user = utils.check_login(username=username, password=password)
         if user:
             login_user(user=user)
-            next = request.args.get('next', 'home')
-            #return redirect(url_for(next))
             return jsonify('{"status": "success"}')
         else:
-            #err_msg= 'Username hoac Password khong dung!!'
             return jsonify('{"status": "error"}')
     return render_template('login.html', err_msg=err_msg)
 

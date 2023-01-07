@@ -40,6 +40,29 @@ export function SignUpScreen({ navigation }) {
   );
 }
 
+async function postSignUp(email, username, password, confirmPassword) {
+  const url = 'https://08ec-59-153-254-226.ap.ngrok.io/register';
+  const formdata = new FormData();
+  formdata.append('username', email);
+  formdata.append('password', username);
+  formdata.append('password', password);
+  formdata.append('password', confirmPassword);
+
+  const headers = {
+      accept: 'application/json',
+      'content-type': 'multipart/form-data',
+  };
+
+  const opts = {
+      method: 'POST',
+      url: url,
+      headers: headers,
+      data: formdata,
+  };
+  return await axios.request(opts);
+}
+
+
 function signUp(email, username, password, confirmPassword) {
   console.log('sign up');
 }
