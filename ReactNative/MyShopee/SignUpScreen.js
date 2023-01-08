@@ -1,8 +1,10 @@
 import React from 'react';
 import { Button, Image, StyleSheet, Text, TextInput, ToastAndroid, View } from 'react-native';
+import axios from 'axios';
 
 
 export function SignUpScreen({ navigation }) {
+  const [name, onChangeName] = React.useState('');
   const [email, onChangeEmail] = React.useState('');
   const [username, onChangeUsername] = React.useState('');
   const [password, onChangePassword] = React.useState('');
@@ -10,6 +12,11 @@ export function SignUpScreen({ navigation }) {
   return (
     <View style={styles.main}>
       <Image style={styles.image} source={require('./assets/profile.png')} />
+
+      <TextInput
+        style={styles.input}
+        placeholder="Name"
+        onChangeText={onChangeName} />
 
       <TextInput
         style={styles.input}
@@ -27,6 +34,7 @@ export function SignUpScreen({ navigation }) {
         onChangeText={onChangePassword} />
 
       <TextInput
+        
         style={styles.input}
         placeholder="Confirm Password"
         onChangeText={onChangeConfirmPassword} />
@@ -34,19 +42,21 @@ export function SignUpScreen({ navigation }) {
       <Button
         style={styles.button}
         title='SignUp'
-        onPress={() => signUp(email, username, password, passwordAgain)} />
-      <Text style={styles.text}>Back</Text>
+        onPress={() => signUp(name, email, username, password, passwordAgain)} />
+      <Text style={styles.text}
+            onPress={() => changeScreen(navigation, 'Login')}>Back</Text>
     </View>
   );
 }
 
-async function postSignUp(email, username, password, confirmPassword) {
-  const url = 'https://08ec-59-153-254-226.ap.ngrok.io/register';
+async function postSignUp(name, email, username, password, confirmPassword) {
+  const url = 'https://4437-59-153-235-241.ap.ngrok.io/register';
   const formdata = new FormData();
-  formdata.append('username', email);
-  formdata.append('password', username);
+  formdata.append('name', name);
+  formdata.append('email', email);
+  formdata.append('username', username);
   formdata.append('password', password);
-  formdata.append('password', confirmPassword);
+  formdata.append('confirm', confirmPassword);
 
   const headers = {
       accept: 'application/json',
@@ -63,8 +73,21 @@ async function postSignUp(email, username, password, confirmPassword) {
 }
 
 
-function signUp(email, username, password, confirmPassword) {
-  console.log('sign up');
+function signUp(name, email, username, password, confirmPassword) {
+  if(password === confirmPassword) {
+    postSignUp(name, email, username, password, confirmPassword)
+    .then((data) => {
+      const res =  JSON.parse(data.data);
+      console.log(res.status);
+    })
+    .catch((reason) => console.log("Message: " + reason.message));
+  } else{
+    console.log('password not match');
+  }
+}
+
+function changeScreen(navigation, screen) {
+  navigation.navigate(screen);
 }
 
 
@@ -88,7 +111,7 @@ const styles = StyleSheet.create({
   },
   image: {
     marginTop: 10,
-    marginBottom: 50,
+    marginBottom: 30,
     width: 200,
     height: 200,
   },
