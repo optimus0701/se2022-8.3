@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Image, StyleSheet, Text, TextInput, ToastAndroid, View } from 'react-native';
 import axios from 'axios';
-import Toast from 'react-native-simple-toast'
+import Url from './Url'
 
 
 export function SignUpScreen({ navigation }) {
@@ -52,7 +52,6 @@ export function SignUpScreen({ navigation }) {
 }
 
 async function postSignUp(name, email, username, password, confirmPassword) {
-  const url = 'https://4437-59-153-235-241.ap.ngrok.io/register';
   const formdata = new FormData();
   formdata.append('name', name);
   formdata.append('email', email);
@@ -81,7 +80,7 @@ function signUp(name, email, username, password, confirmPassword) {
     .then((data) => {
       const res =  JSON.parse(data.data);
       if(res.status === "success") {
-
+        Toast.show('success', Toast.LONG);
         changeScreen(navigation, 'Login');
       }
     })
