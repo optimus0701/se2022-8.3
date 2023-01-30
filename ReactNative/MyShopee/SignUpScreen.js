@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Image, StyleSheet, Text, TextInput, ToastAndroid, View } from 'react-native';
 import axios from 'axios';
+import Toast from 'react-native-simple-toast'
 
 
 export function SignUpScreen({ navigation }) {
@@ -31,10 +32,11 @@ export function SignUpScreen({ navigation }) {
       <TextInput
         style={styles.input}
         placeholder="Password"
+        secureTextEntry
+        right={<TextInput.Icon icon="assets/icon.png" />}
         onChangeText={onChangePassword} />
 
       <TextInput
-        
         style={styles.input}
         placeholder="Confirm Password"
         onChangeText={onChangeConfirmPassword} />
@@ -78,7 +80,10 @@ function signUp(name, email, username, password, confirmPassword) {
     postSignUp(name, email, username, password, confirmPassword)
     .then((data) => {
       const res =  JSON.parse(data.data);
-      console.log(res.status);
+      if(res.status === "success") {
+
+        changeScreen(navigation, 'Login');
+      }
     })
     .catch((reason) => console.log("Message: " + reason.message));
   } else{
@@ -117,6 +122,9 @@ const styles = StyleSheet.create({
   },
   text: {
     marginTop: 20,
+  },
+  passwordBtn: {
+    
   }
 });
 
