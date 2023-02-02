@@ -1,71 +1,118 @@
 import React, { useEffect } from 'react';
-import { Button, Image, StyleSheet, Text, TextInput, View } from 'react-native';
-import axios from 'axios';
+import {
+  Button, Image, KeyboardAvoidingView, StyleSheet,
+  Text, ToastAndroid, TouchableWithoutFeedback, View,
+  Platform, Keyboard, ScrollView
+} from 'react-native';
 
+import { TextInput } from 'react-native-paper';
+
+import axios from 'axios';
+import { URL } from './Url';
+let navi;
 
 export function LoginScreen({ navigation }) {
-  const [email, onChangeEmail] = React.useState('');
+  navi = navigation;
+  const [hidePass, setHidePass] = React.useState(true);
   const [password, onChangePassword] = React.useState('');
+
+  const [username, onChangeUsername] = React.useState('');
   return (
-    <View style={styles.main}>
-      <Image style={styles.image} source={require('./assets/profile.png')} />
+    <ScrollView automaticallyAdjustContentInsets={true} style={styles.scrollview}>
+      <View style={styles.main}>
+        <Image style={styles.image} source={require('./assets/profile.png')} />
 
-      <TextInput
-        style={styles.input}
-        placeholder="Username"
-        onChangeText={onChangeEmail} />
+        <TextInput
+          style={styles.input}
+          placeholder="Username"
+          onChangeText={onChangeUsername}
+          left={
+            <TextInput.Icon 
+            icon={'account'}/>
+          } />
 
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        onChangeText={onChangePassword} />
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          secureTextEntry={hidePass ? true : false}
+          onChangeText={onChangePassword}
+          right={
+            <TextInput.Icon
+              icon={hidePass? "eye-off" : "eye"}
+              onPress={() => {
+                console.log('abc');
+                setHidePass(!hidePass);
+              }}
+            />
+          }
+          left={
+            <TextInput.Icon
+            icon={"lock"} />
+          }
+          />
+        <Button
+          style={styles.button}
+          title='Login'
+          onPress={() => login(username, password)} />
 
-      <Button
-        style={styles.button}
-        title='Login'
-        onPress={() => login(email, password)} />
-
-      <Text style={styles.text}
-        onPress={() => changeScreen(navigation, 'ForgetPassword')}>Forget Password</Text>
-      <Text style={styles.text}
-        onPress={() => changeScreen(navigation, 'SignUp')} >Do not have account? sign up!</Text>
-    </View>
+        <Text style={styles.text}
+          onPress={() => changeScreen(navigation, 'ForgetPassword')}>Forget Password</Text>
+        <Text style={styles.text}
+          onPress={() => changeScreen(navigation, 'SignUp')} >Do not have account? sign up!</Text>
+      </View>
+    </ScrollView>
   );
 }
 
 
 async function postLogin(username, password) {
-  console.log('abc');
-  Url.url += '/user-login';
+  const url = URL + 'user-login'
   const formdata = new FormData();
   formdata.append('username', username);
   formdata.append('password', password);
 
   const headers = {
-      accept: 'application/json',
-      'content-type': 'multipart/form-data',
+    accept: 'application/json',
+    'content-type': 'multipart/form-data',
   };
 
   const opts = {
-      method: 'POST',
-      url: url,
-      headers: headers,
-      data: formdata,
+    method: 'POST',
+    url: url,
+    headers: headers,
+    data: formdata,
   };
   return await axios.request(opts);
 }
 
 function login(email, password) {
-  postLogin(email, password)
+  if(isValidInput(email, password)) {
+    postLogin(email, password)
     .then((data) => {
-      const res =  JSON.parse(data.data);
-      console.log(res.status);
+      const res = JSON.parse(data.data);
+      if (res.status === 'success') {
+        console.log('login success');
+        ToastAndroid.show('success', ToastAndroid.SHORT);
+        changeScreen(navi, 'Home')
+      }
     })
     .catch((reason) => console.log("Message: " + reason.message));
+  } else {
+    console.log('invalid input');
+  }
+  
 }
 
+
+
+
 function changeScreen(navigation, screen) {
+  console.log('change screen from login screen');
   navigation.navigate(screen);
+}
+
+function isValidInput(username, password) {
+  return (username?.trim()?.length || 0) > 0 && (password?.trim()?.length || 0) > 0;
 }
 
 const styles = StyleSheet.create({
@@ -79,8 +126,6 @@ const styles = StyleSheet.create({
     margin: 12,
     width: 300,
     borderWidth: 1,
-    padding: 10,
-    borderRadius: 10,
     backgroundColor: '#76a2e8',
   },
   button: {
@@ -94,5 +139,8 @@ const styles = StyleSheet.create({
   },
   text: {
     marginTop: 20,
-  }
+  },
+  scrollview: {
+    backgroundColor: '#fff',
+  },
 });
