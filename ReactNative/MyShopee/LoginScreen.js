@@ -35,7 +35,8 @@ export function LoginScreen({ navigation }) {
 
 
 async function postLogin(username, password) {
-  const url = 'https://08ec-59-153-254-226.ap.ngrok.io/user-login';
+  console.log('abc');
+  Url.url += '/user-login';
   const formdata = new FormData();
   formdata.append('username', username);
   formdata.append('password', password);
