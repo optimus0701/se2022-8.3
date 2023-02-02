@@ -93,7 +93,7 @@ function login(email, password) {
       if (res.status === 'success') {
         console.log('login success');
         ToastAndroid.show('success', ToastAndroid.SHORT);
-        changeScreen(navi, 'Home')
+        changeScreen(navi, 'Home');
       }
     })
     .catch((reason) => console.log("Message: " + reason.message));
