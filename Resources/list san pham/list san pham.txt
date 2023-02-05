@@ -106,3 +106,66 @@
 "number": 100,
 "type_id": 2
 },
+{
+"pro_name":"Set 2 Bàn Sofa – Bàn Trà Tròn Gỗ MOHO OSLO 901",
+"description":"Kích thước:                                - Bàn tròn cao: Dài 49cm x Rộng 49cm x Cao 51cm         - Bàn tròn thấp: Dài 68cm x Rộng 68cm x Cao 42cm      Chất liệu:                                              - Mặt bàn: Gỗ công nghiệp PB chuẩn CARB-P2 (*), Veneer gỗ sồi tự nhiên                                         - Chân bàn: Gỗ cao su tự nhiên                        (*) Tiêu chuẩn California Air Resources Board xuất khẩu Mỹ, đảm bảo gỗ không độc hại, an toàn cho sức khỏe  Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":2089000 ,
+"image":"image/14" ,
+"seller":"Nội thất moho" ,
+"number": 100,
+"type_id": 2
+},
+{
+"pro_name":"Kệ Gỗ – Kệ Sách MOHO OSLO 901",
+"description":"Kích thước: Dài 80cm x Rộng 30cm x Cao 160cm                                                 Chất liệu: Gỗ công nghiệp PB chuẩn CARB-P2(*), Sơn phủ UV                                                      (*) Tiêu chuẩn California Air Resources Board xuất khẩu Mỹ, đảm bảo gỗ không độc hại, an toàn cho sức khỏe  Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":1990000 ,
+"image": "image/13",
+"seller": "Nội thất moho",
+"number": 100,
+"type_id": 2
+},
+{
+"pro_name":"Kệ Gỗ – Kệ Sách MOHO OSLO 902",
+"description":"Kích thước: Dài 80cm x Rộng 32cm x Cao 160cm                                                   Chất liệu: Gỗ công nghiệp PB chuẩn CARB-P2(*), Sơn phủ UV                                                    (*) Tiêu chuẩn California Air Resources Board xuất khẩu Mỹ, đảm bảo gỗ không độc hại, an toàn cho sức khỏe  Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":2290000 ,
+"image":"image/15" ,
+"seller": "Nội thất moho",
+"number": 100,
+"type_id":4
+},
+{
+"pro_name":"Tủ Giày – Tủ Trang Trí Gỗ MOHO VIENNA 201",
+"description":"Kích thước: Dài 60cm x Rộng 32cm x Cao 120cm                                                   Chất liệu:                                              - Mặt tủ: Gỗ công nghiệp PB chuẩn CARB-P2 (*), Sơn phủ UV                                                      - Thân tủ: Gỗ công nghiệp MDF chuẩn CARB-P2 (*), Sơn phủ UV                                                    (*) Tiêu chuẩn California Air Resources Board xuất khẩu Mỹ, đảm bảo gỗ không độc hại, an toàn cho sức khỏe  Chống thấm, cong vênh, trầy xước, mối mọt",
+"price": 2490000,
+"image": "image/16",
+"seller": "Nội thất moho",
+"number": 100,
+"type_id": 1
+},
+{
+"pro_name":"Tủ Giày – Tủ Trang Trí Gỗ MOHO OSLO 901",
+"description":"Kích thước: Dài 80cm x Rộng 36cm x Cao 92cm  Chất liệu:                                             - Mặt tủ: Gỗ công nghiệp PB chuẩn CARB-P2 (*), Sơn phủ UV                                                      - Thân tủ: Gỗ công nghiệp MDF chuẩn CARB-P2 (*), Sơn phủ UV                                                      - Chân tủ: Gỗ cao su tự nhiên                            (*) Tiêu chuẩn California Air Resources Board xuất khẩu Mỹ, đảm bảo gỗ không độc hại, an toàn cho sức khỏe  Chống thấm, cong vênh, trầy xước, mối mọt",
+"price": 2190000,
+"image": "image/17",
+"seller":"Nội thất moho" ,
+"number": 100,
+"type_id": 1
+},
+{
+"pro_name":"Tủ Kệ Tivi Gỗ MOHO OSLO 201",
+"description":"Kích thước: Dài 160cm x Rộng 40 cm x Cao 60cm                                                  Chất liệu:                                              - Thân tủ: Gỗ công nghiệp PB chuẩn CARB-P2 (*), Sơn phủ UV vân gỗ sồi tự nhiên                                  - Chân tủ: Gỗ cao su tự nhiên                         (*) Tiêu chuẩn California Air Resources Board xuất khẩu Mỹ, đảm bảo gỗ không độc hại, an toàn cho sức khỏe  Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":2790000 ,
+"image": "image/18",
+"seller": "Nội thất moho",
+"number": 100,
+"type_id": 1
+},
+{
+"pro_name":"Bàn Sofa Bàn Cafe - Bàn Trà Gỗ MOHO KOLDING 701",
+"description":"Kích thước: 100cm x 50cm x 40cm          Chất liệu:                                              - Gỗ tràm tự nhiên                                      - Chân sắt sơn tĩnh điện Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":2990000,
+"image":"image/19",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":1
+},
