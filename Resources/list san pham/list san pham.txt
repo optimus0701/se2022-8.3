@@ -350,3 +350,128 @@
 "number":100,
 "type_id":2
 },
+{
+"pro_name":"Tủ Đầu Giường Gỗ Mây Mắt Cáo MOHO FIJI 401",
+"description":"Kích thước: Dài 50cm x Rộng 45cm x Cao 50.5cm                                                  Chất liệu:                                              - Thân tủ: Gỗ công nghiệp PB chuẩn CARB-P2 (*)          - Ngăn kéo: Gỗ cao su và mây mắt cáo tự nhiên           - Chân tủ: Gỗ cao su tự nhiên                           - Tay nắm: Nhôm mạ màu đồng                           (*) Tiêu chuẩn California Air Resources Board xuất khẩu Mỹ, đảm bảo gỗ không độc hại, an toàn cho sức khỏe  Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":1990000,
+"image":"image/40",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":2
+},
+{
+"pro_name":"Tủ Đầu Giường Gỗ MOHO HOBRO 301",
+"description":"Kích thước: Dài 600 x Rộng 550 x Cao 500 Chi tiết vật liệu                                       Thân tủ: MDF veneer gỗ tràm                             Ngăn kéo: MDF & PB                                      Chân tủ: Gỗ tràm                                        (*) Tiêu chuẩn California Air Resources Board xuất khẩu Mỹ, đảm bảo gỗ không độc hại, an toàn cho sức khỏe  Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":2490000,
+"image":"image/41",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":2
+},
+{
+"pro_name":"Tủ Gỗ Kệ Ngăn MOHO VIENNA 201",
+"description":"Kích thước: Dài 50cm x Rộng 60cm x Cao 2m1 Chất liệu: Gỗ công nghiệp PB chuẩn CARB-P2 (*), Sơn phủ UV                                                    (*) Tiêu chuẩn California Air Resources Board xuất khẩu Mỹ, đảm bảo gỗ không độc hại, an toàn cho sức khỏe  Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":2790000,
+"image":"image/42",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":2
+},
+{
+"pro_name":"Bàn Trang Điểm Gỗ Đa Năng MOHO VIENNA 202 Màu Tự Nhiên",
+"description":"Kích thước:                                - Bàn trang điểm: Dài 100cm x Rộng 40cm x Cao 75cm      - Gương trang điểm: Dài 60cm x Cao 55cm               Chất liệu:                                              - Thân bàn: Gỗ công nghiệp MFC chuẩn CARB-P2 (*), Sơn phủ UV                                                  - Hộc bàn: Gỗ công nghiệp MFC chuẩn CARB-P2 (*), Sơn phủ UV                                                      - Chân bàn: Gỗ cao su tự nhiên                          - Gương: Gỗ công nghiệp MFC, gương cao cấp dễ lau chùi, hạn chế bám bụi và hạn chế được sát thương nếu bị vỡ  (*) Tiêu chuẩn California Air Resources Board xuất khẩu Mỹ, đảm bảo gỗ không độc hại, an toàn cho sức khỏe  Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":3990000,
+"image":"image/43",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":2
+},
+{
+"pro_name":"Set Tủ Quần Áo Gỗ MOHO HOBRO 301 4 Cánh",
+"description":"Kích thước: Dài 200cm x Rộng 60cm x Cao 210cm                                                 Chất liệu:                                              - Thân tủ: Gỗ công nghiệp PB chuẩn CARB-P2 (*), Sơn phủ UV                                                      - Cửa tủ: Gỗ công nghiệp MDF chuẩn CARB-P2 (*), Veneer gỗ tràm                                                 - Thanh treo: Hợp kim nhôm, chống gỉ sét                (*) Tiêu chuẩn California Air Resources Board xuất khẩu Mỹ, đảm bảo gỗ không độc hại, an toàn cho sức khỏe  Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":16970000,
+"image":"image/44",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":2
+},
+{
+"pro_name":"Set Tủ Quần Áo Gỗ MOHO HOBRO 301 3 Cánh Thanh Treo",
+"description":"Kích thước: Dài 150cm x Rộng 60cm x Cao 210cm                                                   Chất liệu:                                              - Thân tủ: Gỗ công nghiệp PB chuẩn CARB-P2 (*), Sơn phủ UV                                                      - Cửa tủ: Gỗ công nghiệp MDF chuẩn CARB-P2 (*), Veneer gỗ tràm                                                 - Thanh treo: Hợp kim nhôm, chống gỉ sét              (*) Tiêu chuẩn California Air Resources Board xuất khẩu Mỹ, đảm bảo gỗ không độc hại, an toàn cho sức khỏe  Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":12480000,
+"image":"image/45",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":2
+},
+{
+"pro_name":"Set Tủ Quần Áo MOHO HOBRO 301 3 Cánh Ngăn Kệ",
+"description":"Kích thước: Dài 150cm x Rộng 60cm x Cao 210cm                                                 Chất liệu:                                              - Thân tủ: Gỗ công nghiệp PB chuẩn CARB-P2 (*), Sơn phủ UV                                                      - Cửa tủ: Gỗ công nghiệp MDF chuẩn CARB-P2 (*), Veneer gỗ tràm                                                 - Thanh treo: Hợp kim nhôm, chống gỉ sét                (*) Tiêu chuẩn California Air Resources Board xuất khẩu Mỹ, đảm bảo gỗ không độc hại, an toàn cho sức khỏe      Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":12480000,
+"image":"image/46",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":2
+},
+{
+"pro_name":"Set Tủ Quần Áo Gỗ MOHO VLINE 601 3 Cánh",
+"description":"Kích thước: Dài 152cm x Rộng 60cm x Cao 190cm                                                 Chất liệu:                                              - Thân tủ: Gỗ công nghiệp PB chuẩn CARB-P2 (*), Sơn phủ UV                                                      - Cửa tủ: Gỗ cao su tự nhiên                            - Thanh treo: Gỗ cao su tự nhiên                        (*) Tiêu chuẩn California Air Resources Board xuất khẩu Mỹ, đảm bảo gỗ không độc hại, an toàn cho sức khỏe  Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":11480000,
+"image":"image/47",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":2
+},
+{
+"pro_name":"Set Tủ Quần Áo Gỗ MOHO VIENNA 201 3 Cánh Thanh Treo 4 Màu",
+"description":"Kích thước: Dài 150cm x Rộng 60cm x Cao 2m1                                                       Chất liệu:                                              - Thân tủ: Gỗ công nghiệp PB chuẩn CARB-P2 (*), Sơn phủ UV                                                      - Cửa tủ: Gỗ công nghiệp MDF chuẩn CARB-P2 (*), Sơn phủ UV                                                      - Thanh treo: Hợp kim nhôm, chống gỉ sét               (*) Tiêu chuẩn California Air Resources Board xuất khẩu Mỹ, đảm bảo gỗ không độc hại, an toàn cho sức khỏe  Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":8780000,
+"image":"image/48",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":2
+},
+{
+"pro_name":"Set Tủ Quần Áo Gỗ MOHO HOBRO 301 2 Cánh ",
+"description":"Kích thước: Dài 100cm x Rộng 60cm x Cao 210cm                                                 Chất liệu:                                              - Thân tủ: Gỗ công nghiệp PB chuẩn CARB-P2 (*), Sơn phủ UV                                                      - Cửa tủ: Gỗ công nghiệp MDF chuẩn CARB-P2 (*), Veneer gỗ tràm                                                 - Thanh treo: Hợp kim nhôm, chống gỉ sét                  (*) Tiêu chuẩn California Air Resources Board xuất khẩu Mỹ, đảm bảo gỗ không độc hại, an toàn cho sức khỏe  Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":8980000,
+"image":"image/49",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":2
+},
+{
+"pro_name":"Ghế Ăn Gỗ Cao Su Tự Nhiên MOHO VIBORG 601",
+"description":"Kích thước: Dài 42cm x Rộng 52cm x Cao 85cm                                                       Chất liệu:                                              - Gỗ cao su tự nhiên                                    - Dán Laminate nhựa cao cấp                         Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":1490000,
+"image":"image/50",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":3
+},
+{
+"pro_name":"Ghế Ăn Gỗ Cao Su Tự Nhiên MOHO MALAGA 601",
+"description":"Kích thước: Dài 44cm x Rộng 56cm x Cao 81.5  Chất liệu: Gỗ cao su tự nhiên                        Chống thấm, cong vênh, trầy xước, mối mọt             Kích thước: Dài 46cm x Rộng 54cm x Cao 82cm           Chất liệu:                                              - Gỗ cao su tự nhiên                                    - Vải bọc sợi tổng hợp có khả năng chống thấm nước và dầu                                                     Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":1290000,
+"image":"image/51",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":3
+},
+{
+"pro_name":"Ghế Ăn Gỗ Cao Su Tự Nhiên MOHO MILAN 601 Màu Nâu",
+"description":"Kích thước: Dài 52cm x Rộng 49cm x Cao đến đệm ngồi/lưng tựa 46cm/74cm                             Chất liệu:                                              - Gỗ cao su tự nhiên                                    - Vải bọc polyester chống nhăn, kháng bụi bẩn và nấm mốc Chống thấm, cong vênh, trầy xước, mối mọt",         "price":1190000,
+"image":"image/52",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":3
+},
+{
+"pro_name":"Ghế Ăn Gỗ Cao Su Tự Nhiên MOHO ODESSA",
+"description":"Kích thước: Dài 43cm x Rộng 51cm x Cao đến phần ngồi/lưng tựa 43cm/92cm                          Chất liệu: Gỗ cao su tự nhiên                         Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":1290000,
+"image":"image/53",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":3
+},
