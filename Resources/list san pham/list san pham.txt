@@ -1039,4 +1039,58 @@ Chống thấm, cong vênh, trầy xước, mối mọt
 "number":100,
 "type_id":3
 },
+{
+"pro_name":"Ghế Băng Tựa Gỗ Cao Su Tự nhiên MOHO VLINE 601",
+"description":"Kích thước: Dài 118cm x Rộng 52,4cm Cao đến đệm ngồi/lưng tựa: 38cm/70cm                           Chất liệu: Gỗ cao su tự nhiên                       Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":1990000,
+"image":"image/68",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":3
+},
+{
+"pro_name":"Ghế Băng Gỗ Cao Su Tự Nhiên Nguyên Khối MOHO FYN 901",
+"description":"Kích thước: Dài 120cm x Rộng 40cm x Cao 43cm                                                    Chất liệu:                                              - Gỗ cao su tự nhiên                                    Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":2490000,
+"image":"image/69",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":3
+},
+{
+"pro_name":"Bàn Ăn Gỗ Cao Su Tự Nhiên MOHO VLINE 601 90cm",
+"description":"Kích thước: Dài 90cm x Rộng 75cm x Cao 65cm  Chất liệu: Gỗ cao su tự nhiên  Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":2490000,
+"image":"image/70",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":3
+},
+{
+"pro_name":"Ghế Văn Phòng Chân Quỳ MOHO CALLOSO 701",
+"description":"Kích thước: Dài 50cm x Rộng 47,5cm x Cao 91cm                                                    Chất liệu:                                              - Khung ghế: nhựa cao cấp                               - Tựa lưng và nệm ghế: vải lưới mềm mại thoáng khí      - Chân ghế: thép sơn tĩnh điện",
+"price":899000,
+"image":"image/71",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":4
+},
+{
+"pro_name":"Ghế Văn Phòng Chân Xoay MOHO MAJOR 701",
+"description":"Kích thước: Dài 56cm x Rộng 42cm x Cao 92-106cm                                                Chất liệu:                                              - Khung ghế: nhựa cao cấp                               - Tựa lưng và nệm ghế: vải lưới mềm mại thoáng khí      - Chân ghế: chân xoay inox cao cấp", 
+"price":1290000,
+"image":"image/72",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":4
+},
+{
+"pro_name":"Ghế Xoay Văn Phòng Tay Gập Thông Minh MOHO RIGA 701",
+"description":"Kích thước: Dài 52cm x Rộng 65cm x Cao 94-101cm                                                Chất liệu:                                                - Khung ghế: nhựa cao cấp                                - Tựa lưng và nệm ghế: vải lưới mềm mại thoáng khí",
+"price":1290000,
+"image":"image/73",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":4
+},
 ]
