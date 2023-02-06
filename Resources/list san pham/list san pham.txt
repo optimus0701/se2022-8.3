@@ -1147,4 +1147,49 @@ Chống thấm, cong vênh, trầy xước, mối mọt
 "number":100,
 "type_id":4
 },
+{
+"pro_name":"Ghế Xoay Văn Phòng Ngả Lưng MOHO JEFE 701",
+"description":"Kích thước: Dài 47cm x Rộng 65cm x Cao 108-126cm                                                Chất liệu:                                                - Khung ghế: nhựa cao cấp                                - Tựa lưng và nệm ghế: vải lưới mềm mại thoáng khí       - Chân xoay: inox                                      Ghế có yếu tố công thái học - Ergonomic",
+"price":2290000,
+"image":"image/80",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":4
+},
+{
+"pro_name":"Bàn Máy Tính Gỗ MOHO WORKS 702",
+"description":"Kích thước:                                  - Bàn và chân bài: Dài 120cm x Rộng 62cm x Cao 72cm      - Giá đỡ ổ điện: Dài 33cm x Rộng 9.74cm x Sâu 12cm   Chất liệu:                                                - Mặt bàn: Gỗ công nghiệp MFC cao cấp chuẩn CARB-P2 (*)  - Chân bàn, giá đỡ: Sắt sơn tĩnh điện                  (*) Tiêu chuẩn California Air Resources Board xuất khẩu Mỹ, đảm bảo gỗ không độc hại, an toàn cho sức khỏe  Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":2790000,
+"image":"image/81",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":4
+},
+{
+"pro_name":"Kệ Để Sách 5 Tầng MOHO WORKS 701",
+"description":"Kích thước: Dài 80cm x Rộng 32cm x Cao 174cm Chất liệu:                                              Gỗ công nghiệp PB cao cấp chuẩn CARB-P2 (*)           Khung sắt sơn tĩnh điện chống gỉ, thấm nước.            (*) Tiêu chuẩn California Air Resources Board xuất khẩu Mỹ, đảm bảo gỗ không độc hại, an toàn cho sức khỏe  Chống thấm, cong vênh, trầy xước, mối mọt.",
+"price":3990000,
+"image":"image/82",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":4
+},
+{
+"pro_name":"Bàn Ăn Gỗ MOHO MILAN 901 Màu Gỗ",
+"description":"Kích thước:                                Dài 160cm x Rộng 85cm x Cao 74cm                        Dài 125cm x Rộng 75cm x Cao 74cm                        Chất liệu:                                                - Mặt bàn: Gỗ công nghiệp MDF chuẩn CARB-P2 (*), Veneer gỗ sồi tự nhiên                                           - Chân bàn: Gỗ cao su tự nhiên                         (*) Tiêu chuẩn California Air Resources Board xuất khẩu Mỹ, đảm bảo gỗ không độc hại, an toàn cho sức khỏe  Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":2690000,
+"image":"image/83",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":3
+},
+{
+"pro_name":"Bàn Ăn Gỗ MOHO MOSS 601",
+"description":"Kích thước: Dài 160/140cm x Rộng 85/80cm x Cao 74cm                                              Chất liệu:                                                - Mặt bàn: Gỗ công nghiệp MDF chuẩn CARB-P2 (*), Veneer gỗ cao su tự nhiên                                        - Chân bàn: Gỗ cao su tự nhiên(*) Tiêu chuẩn California Air Resources Board xuất khẩu Mỹ, đảm bảo gỗ không độc hại, an toàn cho sức khỏe                             Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":3490000,
+"image":"image/84",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":2
+}
 ]
