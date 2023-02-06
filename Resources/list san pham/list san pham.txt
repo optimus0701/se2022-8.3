@@ -1003,5 +1003,40 @@ Chống thấm, cong vênh, trầy xước, mối mọt
 "number":100,
 "type_id":3,
 },
-
+{
+"pro_name":"Bộ Bàn Ăn Gỗ 6 Ghế Cao Su MOHO OSLO 601",
+"description":"- Bàn ăn: Dài 140cm x Rộng 75cm x Cao 73cm  Chất liệu:                                             - Mặt bàn: Gỗ công nghiệp PB chuẩn CARB-P2 (*), Veneer gỗ cao su tự nhiên                                      - Chân bàn: Gỗ cao su tự nhiên                          - Ghế ăn: Gỗ cao su tự nhiên/Gỗ tần bì tự nhiên, Vải bọc polyester chống nhăn, kháng bụi bẩn và nấm mốc        (*) Tiêu chuẩn California Air Resources Board xuất khẩu Mỹ, đảm bảo gỗ không độc hại, an toàn cho sức khỏe    Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":8590000,
+"image":"image/64",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":3
+},
+{
+"pro_name":"Bộ Bàn Ăn 6 Ghế Gỗ MOHO MOSS 601",
+"description":"Kích thước:                                - Bàn ăn MOSS: Dài 160 x Rộng 85 cm x Cao 74cm          - Ghế ăn VERONA: Dài 46cm x Rộng 54cm x Cao 82cm        - Ghế ăn MALAGA: Dài 44cm x Rộng 56cm x Cao 81.5        - Ghế ăn ODESSA: Dài 43cm x Rộng 51cm x Cao đến phần ngồi/lưng tựa 43cm/92cm                                 - Ghế ăn MILAN: Dài 52cm x Rộng 49cm x Cao đến đệm ngồi/lưng tựa 46cm/74cm                                     - Ghế ăn OSLO: Dài 50cm x Rộng 51cm x Cao đến đệm ngồi/lưng tựa 41cm/81cm                                     - Ghế ăn NEXO: Dài 48cm x Rộng 42cm x Cao 80cm          - Ghế ăn SORO: Dài 51cm x Rộng 42cm x Cao 76cm        Chất liệu bàn ăn MOSS:                                  - Mặt bàn: Gỗ công nghiệp MDF chuẩn CARB-P2 (*), Veneer gỗ cao su tự nhiên                                      - Chân bàn: Gỗ cao su tự nhiên                        (*) Tiêu chuẩn California Air Resources Board xuất khẩu Mỹ, đảm bảo gỗ không độc hại, an toàn cho sức khỏe  Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":9490000,
+"image":"image/65",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":3
+},
+{
+"pro_name":"Bộ Bàn Ăn 4 Ghế Gỗ MOHO NYBORG 301",
+"description":"Đen              Nâu                     Kích thước:                                           Bàn ăn: Dài 140cm x Rộng 80cm x Cao 75cm              Ghế ăn: Dài 48cm x Rộng 48cm x Cao 80cm                 Chất liệu:                                              - Mặt bàn: Gỗ công nghiệp MDF chuẩn CARB-P2 (*), Veneer gỗ tràm tự nhiên                                        - Chân bàn: Gỗ tràm tự nhiên                            - Ghế ăn gỗ cao su tự nhiên                           (*) Tiêu chuẩn California Air Resources Board xuất khẩu Mỹ, đảm bảo gỗ không độc hại, an toàn cho sức khỏe  Chống thấm, cong vênh, trầy xước, mối mọt",
+"price":10490000,
+"image":"image/66",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":3
+},
+{
+"pro_name":"Bộ Bàn Ăn 4 Ghế Gỗ MOHO MOSS 601",
+"description":"Kích thước:                                - Bàn ăn MOSS: Dài 140 x Rộng 80 cm x Cao 74cm          - Ghế ăn VERONA: Dài 46cm x Rộng 54cm x Cao 82cm",
+"price":7100000,
+"image":"image/67",
+"seller":"Nội thất moho",
+"number":100,
+"type_id":3
+},
 ]
