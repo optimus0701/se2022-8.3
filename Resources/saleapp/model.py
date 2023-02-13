@@ -3,6 +3,7 @@ from __init__ import db, app
 from enum import Enum as UserEnum
 from flask_login import UserMixin
 import hashlib
+import json
 
 class BaseModel(db.Model):
     __abstract__ = True
@@ -46,6 +47,7 @@ class Products(BaseModel):
     def __str__(self):
         return self.pro_name
 
+
 class Receipt(BaseModel):
     created_date = db.Column(db.DateTime, default=db.func.now)
     user_id = db.Column(db.Integer, db.ForeignKey(User.id), nullable=False)
@@ -56,6 +58,12 @@ class ReceiptDetail(db.Model):
     product_id = db.Column(db.Integer, db.ForeignKey(Products.id), nullable=False, primary_key=True)
     quantity = db.Column(db.Integer, default=0)
     unit_price = db.Column(db.Float, default=0)
+
+
+def update_product():
+    file = open("C:\se2022-8.3\Resources\listproduct\list_product.json", 'r', encoding='utf-8')
+    json_data = file.read()
+    return json_data
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
