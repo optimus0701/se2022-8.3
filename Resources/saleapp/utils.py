@@ -1,6 +1,6 @@
 import json, os
 from __init__ import app, db
-from model import Category, Products, User, Receipt, ReceiptDetail, UserRole
+from model import Category, Products, User, UserRole
 from flask_login import current_user
 import hashlib
 
