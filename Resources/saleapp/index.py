@@ -1,11 +1,15 @@
-from flask import render_template, request, redirect, url_for, session, jsonify, abort
+from flask import render_template, request, redirect, url_for, session, jsonify, abort, send_from_directory
 from __init__ import app, login
 from flask_login import login_user, logout_user, login_required, current_user
 from model import UserRole
 import utils
 import math
+import os
 import model
 import cloudinary.uploader
+
+
+app.config['IMAGE'] = 'C:\se2022-8.3\Resources\saleapp\static'
 
 @app.route("/")
 def home():
@@ -150,6 +154,11 @@ def product_list():
     products = utils.load_products_to_json()
     return products
 
+
+@app.route("/get_image/<path:filename>")
+def get_image(filename):
+    directory = os.path.join(current_app.root_path, 'static')
+    return send_from_directory(directory=directory, path=filename, as_attachment=True)
 
 if __name__ == "__main__":
     from admin import *
