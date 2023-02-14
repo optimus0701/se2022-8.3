@@ -147,13 +147,9 @@ def common_response():
 
 @app.route("/products")
 def product_list():
-    products = utils.load_products()
-    return render_template('products.html', products = products)
+    products = utils.load_products_to_json()
+    return products
 
-@app.route("/products/update")
-def update_product():
-    data = model.update_product()
-    return data
 
 if __name__ == "__main__":
     from admin import *

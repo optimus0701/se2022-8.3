@@ -4,6 +4,7 @@ from enum import Enum as UserEnum
 from flask_login import UserMixin
 import hashlib
 import json
+from dataclasses import dataclass
 
 class BaseModel(db.Model):
     __abstract__ = True
@@ -32,8 +33,18 @@ class User(BaseModel, UserMixin):
     
     def __str__(self):
         return self.name
-
+@dataclass
 class Products(BaseModel):
+    pro_name:str
+    description:str
+    price:int
+    image:str
+    seller:str
+    number:int
+    type_id:int
+
+
+
     pro_name = db.Column(db.String(100), nullable = False)
     description = db.Column(db.String(5000))
     price = db.Column(db.Integer, nullable = False)
