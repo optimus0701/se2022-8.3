@@ -26,7 +26,10 @@ export function ProductDetailScreen({ route, navigation }) {
             <View style={styleSheet.viewButtonOrder}>
                 <View style={styleSheet.buttonOrder}>
                     <Button
-                        title={'$' + item.price} />
+                        title={'$' + item.price}
+                        onPress={() => {
+                            navigation.navigate('Order', {item});
+                        }} />
                 </View>
             </View>
         </SafeAreaView>

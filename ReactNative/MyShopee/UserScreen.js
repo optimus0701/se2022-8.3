@@ -1,149 +1,82 @@
-import React, {useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  Button, Image, KeyboardAvoidingView, StyleSheet,
-  Text, ToastAndroid, TouchableWithoutFeedback, View,
-  Platform, Keyboard, ScrollView
+  ActivityIndicator, View, StyleSheet, SafeAreaView,
+  FlatList, Text, Image, TouchableWithoutFeedback, Button
 } from 'react-native';
-
-import { TextInput } from 'react-native-paper';
-import axios from 'axios';
-import { URL } from './Url';
-import * as SecureStore from "expo-secure-store";
-
-
-let navi;
+import { URL } from "./Url";
 
 export function UserScreen({ navigation }) {
-  navi = navigation;
-  const [hidePass, setHidePass] = React.useState(true);
-  const [password, onChangePassword] = React.useState('');
-
-  const [username, onChangeUsername] = React.useState('');
   return (
-    <ScrollView automaticallyAdjustContentInsets={true} style={styles.scrollview}>
-      <View style={styles.main}>
-        <Image style={styles.image} source={require('./assets/profile.png')} />
-
-        <TextInput
-          style={styles.input}
-          placeholder="Username"
-          onChangeText={onChangeUsername}
-          left={
-            <TextInput.Icon 
-            icon={'account'}/>
-          } />
-
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          secureTextEntry={hidePass ? true : false}
-          onChangeText={onChangePassword}
-          right={
-            <TextInput.Icon
-              icon={hidePass? "eye-off" : "eye"}
-              onPress={() => {
-                console.log('abc');
-                setHidePass(!hidePass);
-              }}
-            />
-          }
-          left={
-            <TextInput.Icon
-            icon={"lock"} />
-          }
-          />
-        <Button
-          style={styles.button}
-          title='Login'
-          onPress={() => login(username, password)} />
-
-        <Text style={styles.text}
-          onPress={() => changeScreen(navigation, 'ForgetPassword')}>Forget Password</Text>
-        <Text style={styles.text}
-          onPress={() => changeScreen(navigation, 'SignUp')} >Do not have account? sign up!</Text>
+    <SafeAreaView style={styles.mainContainer}>
+      <View style={styles.viewProfile}>
+        <View style={{ flexDirection: 'row' }}>
+          <Image style={styles.imageProfile}
+            source={require('./assets/profile.png')}></Image>
+          <View>
+            <Text style={styles.itemText}>Username</Text>
+            <Text style={styles.itemText}>Email</Text>
+          </View>
+        </View>
       </View>
-    </ScrollView>
+
+      <View style={styles.viewOptions}>
+        <View style={styles.cart}>
+          <Image style={styles.imageOptions}
+            source={require('./assets/cart.png')}></Image>
+          <Text style={{ fontSize: 12, marginLeft: 10 }}>Giỏ Hàng</Text>
+        </View>
+        <View style={styles.order}>
+          <Image style={styles.imageOptions}
+            source={require('./assets/fast-delivery.png')}></Image>
+          <Text style={{ fontSize: 12 }}>Đang Vận Chuyển</Text>
+        </View>
+      </View>
+      <View style={{paddingTop: 200, justifyContent: 'center', alignContent: 'center', flexDirection: 'row'}}>
+        <View style={{width: 100}}>
+          <Button title='LOGOUT'/>
+        </View>
+      </View>
+    </SafeAreaView>
   );
 }
 
 
-async function postLogin(username, password) {
-  const url = URL + 'user-login'
-  const formdata = new FormData();
-  formdata.append('username', username);
-  formdata.append('password', password);
-
-  const headers = {
-    accept: 'application/json',
-    'content-type': 'multipart/form-data',
-  };
-
-  const opts = {
-    method: 'POST',
-    url: url,
-    headers: headers,
-    data: formdata,
-  };
-  return await axios.request(opts);
-}
-
-function login(email, password) {
-  if(isValidInput(email, password)) {
-    postLogin(email, password)
-    .then((data) => {
-      const res = JSON.parse(data.data);
-      if (res.status === 'success') {
-        SecureStore.setItemAsync('is_login', 'true');
-        console.log('login success');
-        ToastAndroid.show('success', ToastAndroid.SHORT);
-        changeScreen(navi, 'Main');
-      }
-    })
-    .catch((reason) => console.log("Message: " + reason.message));
-  } else {
-    console.log('invalid input');
-  }
-  
-}
-
-
-
-
-function changeScreen(navigation, screen) {
-  console.log('change screen from login screen');
-  navigation.navigate(screen);
-}
-
-function isValidInput(username, password) {
-  return (username?.trim()?.length || 0) > 0 && (password?.trim()?.length || 0) > 0;
-}
-
 const styles = StyleSheet.create({
-  main: {
-    backgroundColor: '#fff',
-    alignItems: 'center',
+  mainContainer: {
     flex: 1,
+    backgroundColor: 'white',
   },
-  input: {
-    height: 40,
-    margin: 12,
-    width: 300,
-    borderWidth: 1,
-    backgroundColor: '#76a2e8',
+  viewProfile: {
+    width: '100%',
+    height: 180,
+    padding: 10,
+    backgroundColor: 'white',
+    borderBottomWidth: 1,
   },
-  button: {
-    marginTop: 20,
+  imageProfile: {
+    width: 60,
+    height: 60,
   },
-  image: {
-    marginTop: 10,
-    marginBottom: 120,
-    width: 200,
-    height: 200,
+  itemText: {
+    paddingLeft: 10,
+    paddingTop: 6,
   },
-  text: {
-    marginTop: 20,
+  viewOptions: {
+    flexDirection: 'row',
   },
-  scrollview: {
-    backgroundColor: '#fff',
+  imageOptions: {
+    width: 60,
+    height: 60,
   },
+  cart: {
+    paddingLeft: 60,
+    justifyContent: 'center',
+    alignContent: 'center',
+  },
+  order: {
+    paddingLeft: 120,
+    justifyContent: 'center',
+    alignContent: 'center',
+    paddingTop: 5,
+  }
 });

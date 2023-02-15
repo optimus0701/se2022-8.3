@@ -7,6 +7,7 @@ import { ForgetPasswordScreen } from './ForgetPasswordScreen';
 import { SignUpScreen } from './SignUpScreen';
 import { ProductDetailScreen } from './ProductDetailScreen'
 import { MainScreen } from './MainScreen';
+import { OrderScreen } from './OrderScreen';
 
 import * as SecureStore from "expo-secure-store";
 
@@ -39,6 +40,7 @@ export default function App() {
         <Stack.Navigator initialRouteName='Main'>
           <Stack.Screen name="Main" component={MainScreen} />
           <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
+          <Stack.Screen name="Order" component={OrderScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     );
