@@ -1,42 +1,77 @@
-import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import React from 'react';
+import { Button, StyleSheet, Text, TextInput, View, AsyncStorage } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { LoginScreen } from './LoginScreen';
+import { ForgetPasswordScreen } from './ForgetPasswordScreen';
+import { SignUpScreen } from './SignUpScreen';
+import { ProductDetailScreen } from './ProductDetailScreen'
+import { MainScreen } from './MainScreen';
+import { OrderScreen } from './OrderScreen';
 
-export default function App() {
-  return (
-    <View style={styles.title}>
-      <StatusBar style="auto" />
-      <Text>Login Demo</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Username"
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-      />
-      <Button 
-      style={styles.button}
-      title='Login'/>
-    </View>
-  );
+import * as SecureStore from "expo-secure-store";
+import { UserScreen } from './UserScreen';
+
+const Stack = createNativeStackNavigator();
+
+async function save(key, value) {
+  await SecureStore.setItemAsync(key, value);
 }
 
-const styles = StyleSheet.create({
-  title: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    borderRadius: 10,
-    backgroundColor: '#76a2e8',
-  },
-  button: {
-    marginTop: 20
-  },
-});
+async function getValueFor(key) {
+
+}
+
+export default function App() {
+
+  const [isLogin, onChange] = React.useState(false);
+
+  SecureStore.getItemAsync('is_login').then(isLogin => {
+    if (!isLogin || isLogin === 'false') {
+      onChange(false);
+    } else if (isLogin = 'true') {
+      onChange(true);
+    }
+  })
+
+  if (isLogin) {
+    console.log('isLogin');
+    return (
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName='Main'>
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="ForgetPassword" component={ForgetPasswordScreen} />
+          <Stack.Screen name="SignUp" component={SignUpScreen} />
+          <Stack.Screen name="Main"component={MainScreen}/>
+          <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
+          <Stack.Screen name="Order" component={OrderScreen} />
+          <Stack.Screen name="User" component={UserScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  } else {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName='Login'>
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="ForgetPassword" component={ForgetPasswordScreen} />
+          <Stack.Screen name="SignUp" component={SignUpScreen} />
+          <Stack.Screen
+            name="Main"
+            component={MainScreen}
+            options={{ headerBackTitleVisible: false }} />
+          <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
+          <Stack.Screen name="Order" component={OrderScreen} />
+          <Stack.Screen name="User" component={UserScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  }
+}
+
+
+
+
+
+
+

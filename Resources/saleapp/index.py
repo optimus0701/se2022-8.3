@@ -1,10 +1,15 @@
-from flask import render_template, request, redirect, url_for, session, jsonify, abort
+from flask import render_template, request, redirect, url_for, session, jsonify, abort, send_from_directory, current_app
 from __init__ import app, login
 from flask_login import login_user, logout_user, login_required, current_user
 from model import UserRole
 import utils
 import math
+import os
+import model
 import cloudinary.uploader
+
+
+app.config['IMAGE'] = 'C:\se2022-8.3\Resources\saleapp\static'
 
 @app.route("/")
 def home():
@@ -34,11 +39,11 @@ def user_register():
                     res = cloudinary.uploader.upload(avatar)
                     avatar_path = res['secure_url']
                 utils.add_user(name=name, username=username, password=password, email=email, avatar=avatar_path)
-                return redirect(url_for('user_signin'))
+                return jsonify('{"status": "success"}')
             else:
-                err_msg='Mat khau khong khop!!'
+                return jsonify('{"status": "error"}')
         except Exception as ex:
-            err_msg='Loi: ' + str(ex)
+            return jsonify('{"status": "error"}')
             
     
     return render_template('register.html', err_msg=err_msg)
@@ -49,14 +54,13 @@ def user_signin():
     if request.method.__eq__('POST'):
         username = request.form.get('username')
         password = request.form.get('password')
-
+        print("login...")
         user = utils.check_login(username=username, password=password)
         if user:
             login_user(user=user)
-            next = request.args.get('next', 'home')
-            return redirect(url_for(next))
+            return jsonify('{"status": "success"}')
         else:
-            err_msg= 'Username hoac Password khong dung!!'
+            return jsonify('{"status": "error"}')
     return render_template('login.html', err_msg=err_msg)
 
 
@@ -147,8 +151,20 @@ def common_response():
 
 @app.route("/products")
 def product_list():
-    products = utils.load_products()
-    return render_template('products.html', products = products)
+    products = utils.load_products_to_json()
+    return products
+
+@app.route("/get_orders/<username>")
+def get_orders(username):
+    orders = utils.get_order_by_username(username)
+    print(orders)
+    return jsonify(orders.all())
+
+
+@app.route("/get_image/<path:filename>")
+def get_image(filename):
+    directory = os.path.join(current_app.root_path, 'static')
+    return send_from_directory(directory=directory, path=filename, as_attachment=True)
 
 if __name__ == "__main__":
     from admin import *

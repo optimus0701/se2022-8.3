@@ -1,8 +1,9 @@
 import json, os
 from __init__ import app, db
-from model import Category, Products, User, Receipt, ReceiptDetail, UserRole
+from model import Category, Products, User, UserRole, Orders
 from flask_login import current_user
 import hashlib
+from flask import jsonify
 
 def read_json(path):
     with open(path, "r") as f:
@@ -26,8 +27,17 @@ def load_products(cate_id=None, kw=None, from_price=None, to_price=None, page=1)
     start = (page - 1)*page_size
     end =  start + page_size
     return products.slice(start, end).all()
+
+
+def load_products_to_json():
+    products = Products.query.all()
+    return jsonify(products)
+
 def get_product_by_id(product_id):
     return Products.query.get(product_id)
+
+def get_order_by_username(username):
+    return Orders.query.filter(Orders.username == username)
 
 def count_products():
     return Products.query.filter(Products.number > 0).count()
