@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import {
   Button, Image, KeyboardAvoidingView, StyleSheet,
   Text, ToastAndroid, TouchableWithoutFeedback, View,
@@ -14,6 +14,21 @@ import * as SecureStore from "expo-secure-store";
 let navi;
 
 export function LoginScreen({ navigation }) {
+
+  const [isLogin, onChange] = React.useState(false);
+
+  SecureStore.getItemAsync('is_login').then(isLogin => {
+    if (!isLogin || isLogin === 'false') {
+      onChange(false);
+    } else if (isLogin = 'true') {
+      onChange(true);
+      navi.reset({
+        index: 0,
+        routes: [{ name: 'Main' }],
+      });
+    }
+  })
+
   navi = navigation;
   const [hidePass, setHidePass] = React.useState(true);
   const [password, onChangePassword] = React.useState('');
@@ -29,8 +44,8 @@ export function LoginScreen({ navigation }) {
           placeholder="Username"
           onChangeText={onChangeUsername}
           left={
-            <TextInput.Icon 
-            icon={'account'}/>
+            <TextInput.Icon
+              icon={'account'} />
           } />
 
         <TextInput
@@ -40,7 +55,7 @@ export function LoginScreen({ navigation }) {
           onChangeText={onChangePassword}
           right={
             <TextInput.Icon
-              icon={hidePass? "eye-off" : "eye"}
+              icon={hidePass ? "eye-off" : "eye"}
               onPress={() => {
                 console.log('abc');
                 setHidePass(!hidePass);
@@ -49,9 +64,9 @@ export function LoginScreen({ navigation }) {
           }
           left={
             <TextInput.Icon
-            icon={"lock"} />
+              icon={"lock"} />
           }
-          />
+        />
         <Button
           style={styles.button}
           title='Login'
@@ -88,26 +103,26 @@ async function postLogin(username, password) {
 }
 
 function login(username, password) {
-  if(isValidInput(username, password)) {
+  if (isValidInput(username, password)) {
     postLogin(username, password)
-    .then((data) => {
-      const res = JSON.parse(data.data);
-      if (res.status === 'success') {
-        SecureStore.setItemAsync('is_login', 'true');
-        SecureStore.setItemAsync('current_user', username);
-        console.log('login success');
-        ToastAndroid.show('success', ToastAndroid.SHORT);
-        navi.reset({
-          index: 0,
-          routes: [{ name: 'Main' }],
-        });
-      }
-    })
-    .catch((reason) => console.log("Message: " + reason.message));
+      .then((data) => {
+        const res = JSON.parse(data.data);
+        if (res.status === 'success') {
+          SecureStore.setItemAsync('is_login', 'true');
+          SecureStore.setItemAsync('current_user', username);
+          console.log('login success');
+          ToastAndroid.show('success', ToastAndroid.SHORT);
+          navi.reset({
+            index: 0,
+            routes: [{ name: 'Main' }],
+          });
+        }
+      })
+      .catch((reason) => console.log("Message: " + reason.message));
   } else {
     console.log('invalid input');
   }
-  
+
 }
 
 

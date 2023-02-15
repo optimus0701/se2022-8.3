@@ -40,11 +40,13 @@ class Orders(BaseModel):
     product:str
     address:str
     phone:str
+    status:str
 
     username = db.Column(db.String(100), nullable = False)
     product = db.Column(db.String(100), nullable = False)
     address = db.Column(db.String(100), nullable = False)
     phone = db.Column(db.String(100), nullable = False)
+    status = db.Column(db.Integer(), nullable = False)
 
 
 @dataclass
@@ -103,10 +105,15 @@ def update_product():
                             image=image, seller=seller, number=number, type_id=type_id)
         product_entries.append(new_entry)
     db.session.add_all(product_entries)
-        
-    
-
     return json_data
+
+
+def add_order(username, product, address, phone, status):
+    order = Orders(username=username, product=product, address=address, phone=phone, status=status)
+    db.session.add(order)
+    db.session.commit()
+
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()

@@ -33,7 +33,7 @@ export function HomeScreen({ navigation }) {
             <View style={styleSheet.listItem}>
             <Image
                 style={styleSheet.itemImage}
-                source={{uri:URL + '/get_image/' + item.image}}></Image>
+                source={{uri:URL + '/get_image/' + item.image + '.png'}}></Image>
             <Text style={styleSheet.itemText}> {item['pro_name']} </Text>
         </View>
         </TouchableWithoutFeedback>

@@ -166,6 +166,17 @@ def get_image(filename):
     directory = os.path.join(current_app.root_path, 'static')
     return send_from_directory(directory=directory, path=filename, as_attachment=True)
 
+
+@app.route("/upload_order")
+def upload_order():
+    username = request.args.get('username')
+    product = request.args.get('product')
+    address = request.args.get('address')
+    phone = request.args.get('phone')
+    status = request.args.get('status')
+    model.add_order(username, product, address, phone, status)
+    return jsonify('{"status": "success"}')
+
 if __name__ == "__main__":
     from admin import *
 
