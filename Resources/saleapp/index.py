@@ -154,6 +154,12 @@ def product_list():
     products = utils.load_products_to_json()
     return products
 
+@app.route("/get_orders/<username>")
+def get_orders(username):
+    orders = utils.get_order_by_username(username)
+    print(orders)
+    return jsonify(orders.all())
+
 
 @app.route("/get_image/<path:filename>")
 def get_image(filename):

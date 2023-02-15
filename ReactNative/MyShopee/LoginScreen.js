@@ -97,7 +97,10 @@ function login(username, password) {
         SecureStore.setItemAsync('current_user', username);
         console.log('login success');
         ToastAndroid.show('success', ToastAndroid.SHORT);
-        changeScreen(navi, 'Main');
+        navi.reset({
+          index: 0,
+          routes: [{ name: 'Main' }],
+        });
       }
     })
     .catch((reason) => console.log("Message: " + reason.message));

@@ -5,8 +5,19 @@ import {
 } from 'react-native';
 import { URL } from "./Url";
 
-export function OrderScreen({navigation}) {
-    return(
+export function OrderScreen({ navigation }) {
+
+    const [current_user, onChange] = React.useState(false);
+
+    SecureStore.getItemAsync('current_user').then(current_user => {
+        if (!current_user) {
+            onChange('');
+        } else {
+            onChange(current_user);
+        }
+    })
+
+    return (
         <View>
             <Text>{'' + item.price}</Text>
         </View>

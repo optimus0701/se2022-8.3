@@ -19,7 +19,7 @@ async function save(key, value) {
 }
 
 async function getValueFor(key) {
- 
+
 }
 
 export default function App() {
@@ -27,35 +27,42 @@ export default function App() {
   const [isLogin, onChange] = React.useState(false);
 
   SecureStore.getItemAsync('is_login').then(isLogin => {
-    if(!isLogin || isLogin === 'false') {
+    if (!isLogin || isLogin === 'false') {
       onChange(false);
-    } else if( isLogin = 'true') {
+    } else if (isLogin = 'true') {
       onChange(true);
     }
   })
-  
-  if(isLogin) {
+
+  if (isLogin) {
     console.log('isLogin');
     return (
       <NavigationContainer>
         <Stack.Navigator initialRouteName='Main'>
-          <Stack.Screen name="Main" component={MainScreen} />
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="ForgetPassword" component={ForgetPasswordScreen} />
+          <Stack.Screen name="SignUp" component={SignUpScreen} />
+          <Stack.Screen name="Main"component={MainScreen}/>
           <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
           <Stack.Screen name="Order" component={OrderScreen} />
+          <Stack.Screen name="User" component={UserScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     );
   } else {
     return (
       <NavigationContainer>
-        <Stack.Navigator  initialRouteName='Main'>
+        <Stack.Navigator initialRouteName='Login'>
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="ForgetPassword" component={ForgetPasswordScreen} />
           <Stack.Screen name="SignUp" component={SignUpScreen} />
-          <Stack.Screen 
-          name="Main" 
-          component={MainScreen}
-          options={{headerBackTitleVisible: false}} />
+          <Stack.Screen
+            name="Main"
+            component={MainScreen}
+            options={{ headerBackTitleVisible: false }} />
+          <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
+          <Stack.Screen name="Order" component={OrderScreen} />
+          <Stack.Screen name="User" component={UserScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     );

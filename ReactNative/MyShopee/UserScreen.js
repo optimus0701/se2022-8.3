@@ -4,6 +4,7 @@ import {
   FlatList, Text, Image, TouchableWithoutFeedback, Button
 } from 'react-native';
 import { URL } from "./Url";
+import * as SecureStore from "expo-secure-store";
 
 export function UserScreen({ navigation }) {
   return (
@@ -37,7 +38,13 @@ export function UserScreen({ navigation }) {
       </View>
       <View style={{ paddingTop: 200, justifyContent: 'center', alignContent: 'center', flexDirection: 'row' }}>
         <View style={{ width: 100 }}>
-          <Button title='LOGOUT' />
+          <Button title='LOGOUT' onPress={() => {
+            SecureStore.setItemAsync('is_login', 'false');
+            navigation.reset({
+              index: 0,
+              routes: [{ name: 'Login' }],
+            });
+          }} />
         </View>
       </View>
     </SafeAreaView>

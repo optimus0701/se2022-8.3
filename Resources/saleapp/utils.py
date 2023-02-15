@@ -1,6 +1,6 @@
 import json, os
 from __init__ import app, db
-from model import Category, Products, User, UserRole
+from model import Category, Products, User, UserRole, Orders
 from flask_login import current_user
 import hashlib
 from flask import jsonify
@@ -35,6 +35,9 @@ def load_products_to_json():
 
 def get_product_by_id(product_id):
     return Products.query.get(product_id)
+
+def get_order_by_username(username):
+    return Orders.query.filter(Orders.username == username)
 
 def count_products():
     return Products.query.filter(Products.number > 0).count()
