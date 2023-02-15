@@ -1,4 +1,5 @@
 # Ứng dụng Shopee Fake
+# Báo cáo tìm hiểu về ReactNative nằm trong file tailieu.doc
 # Các bước cài đặt
 ## Bước 1: clone source về máy
 git clone https://github.com/optimus0701/se2022-8.3.git
