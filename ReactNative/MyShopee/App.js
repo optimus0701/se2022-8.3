@@ -1,25 +1,61 @@
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import React from 'react';
+import { Button, StyleSheet, Text, TextInput, View, AsyncStorage } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { LoginScreen } from './LoginScreen';
 import { ForgetPasswordScreen } from './ForgetPasswordScreen';
 import { SignUpScreen } from './SignUpScreen';
 import { HomeScreen } from './HomeScreen';
+import { MainScreen } from './MainScreen';
 
+import * as SecureStore from "expo-secure-store";
 
 const Stack = createNativeStackNavigator();
 
+async function save(key, value) {
+  await SecureStore.setItemAsync(key, value);
+}
+
+async function getValueFor(key) {
+ 
+}
+
 export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Login" component={LoginScreen}/>
-        <Stack.Screen name="ForgetPassword" component={ForgetPasswordScreen}/>
-        <Stack.Screen name="SignUp" component={SignUpScreen}/>
-        <Stack.Screen name="Home" component={HomeScreen}/>
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+
+  const [isLogin, onChange] = React.useState(false);
+
+  SecureStore.getItemAsync('is_login').then(isLogin => {
+    if(!isLogin || isLogin === 'false') {
+      onChange(false);
+    } else if( isLogin = 'true') {
+      onChange(true);
+    }
+  })
+  
+  if(isLogin) {
+    console.log('isLogin');
+    return (
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName='Main'>
+          <Stack.Screen name="Main" component={MainScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  } else {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator  initialRouteName='Main'>
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="ForgetPassword" component={ForgetPasswordScreen} />
+          <Stack.Screen name="SignUp" component={SignUpScreen} />
+          <Stack.Screen 
+          name="Main" 
+          component={MainScreen}
+          options={{headerBackTitleVisible: false}} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  }
 }
 
 

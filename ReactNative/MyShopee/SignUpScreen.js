@@ -80,7 +80,7 @@ export function SignUpScreen({ navigation }) {
         <Button
           style={styles.button}
           title='SignUp'
-          onPress={() => signUp(name, email, username, password, passwordAgain)} />
+          onPress={() => signUp(name, email, username, password, passwordConfirm)} />
         <Text style={styles.text}
           onPress={() => changeScreen(navigation, 'Login')}>Back</Text>
       </View>

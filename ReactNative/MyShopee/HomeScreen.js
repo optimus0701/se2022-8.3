@@ -1,33 +1,95 @@
-import React from 'react';
-import { FlatList, StyleSheet, Text, View, Image } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, View, StyleSheet, SafeAreaView,
+     FlatList, Text, Image, TouchableWithoutFeedback } from 'react-native';
+import { URL } from "./Url";
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        paddingTop: 22
-    },
-    item: {
-        padding: 10,
-        fontSize: 18,
-        height: 44,
-    },
-    img: {
-        width: 100,
-        height: 100
-    },
-});
 
 
 export function HomeScreen({ navigation }) {
-    return (
-        <View style={styles.container}>
-            <FlatList
-                data={[
-                    { key: 'Devin', image: require('./assets/profile.png') },
-                    { key: 'Dan', image: require('./assets/profile.png') },
-                ]}
-                renderItem={({ item }) => <><Image source={item.image} style={styles.img} /><Text style={styles.item}>{item.key}</Text></>}
-            />
+    const [JSON_DATA, setJSON_DATA] = useState('');
+
+    const [showIndicator, setShowIndicator] = useState(true);
+
+    useEffect(() => {
+        async function fetchData() {
+            fetch(URL + 'products')
+                .then((response) => response.json())
+                .then((responseJson) => {
+                    setJSON_DATA(responseJson);
+                    setShowIndicator(false);
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
+        fetchData();
+
+    }, []);
+
+    const ItemRender = ({ item }) => (
+        <TouchableWithoutFeedback onPress={() => {
+            console.log('abc');
+        }}>
+            <View style={styleSheet.listItem}>
+            <Image
+                style={styleSheet.itemImage}
+                source={{uri:URL + '/get_image/' + item.image}}></Image>
+            <Text style={styleSheet.itemText}> {item['pro_name']} </Text>
         </View>
+        </TouchableWithoutFeedback>
+    );
+
+
+
+    return (
+        <SafeAreaView style={styleSheet.MainContainer}>
+
+            <ActivityIndicator
+                size="large"
+                color="red"
+                animating={showIndicator}
+                style={styleSheet.activityIndicator} />
+
+            <FlatList
+                data={JSON_DATA}
+                renderItem={({ item }) => <ItemRender item={item} />}
+                numColumns={3}
+                keyExtractor={item => item.id}
+            />
+
+        </SafeAreaView>
     );
 }
+const styleSheet = StyleSheet.create({
+    MainContainer: {
+        flex: 1,
+    },
+
+    listItem: {
+        paddingLeft: 12,
+        paddingTop: 10,
+        paddingBottom: 10,
+    },
+
+    itemText: {
+        fontSize: 12,
+        color: 'black',
+        width: 105,
+        flex: 1,
+        textAlign: 'center'
+    },
+    itemImage: {
+        width: 105,
+        height: 100,
+    },
+    activityIndicator: {
+        position: 'absolute',
+        alignItems: 'center',
+        justifyContent: 'center',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+    }
+
+});

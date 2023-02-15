@@ -13,7 +13,7 @@ import * as SecureStore from "expo-secure-store";
 
 let navi;
 
-export function LoginScreen({ navigation }) {
+export function UserScreen({ navigation }) {
   navi = navigation;
   const [hidePass, setHidePass] = React.useState(true);
   const [password, onChangePassword] = React.useState('');
