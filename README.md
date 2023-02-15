@@ -159,7 +159,7 @@ Cả Flutter vs React Native điều là các Cross – platform framework đư�
 # Ứng dụng Shopee Fake
 Ứng dụng sử dụng React Native làm frond-end, python và sql làm back-end
 # Các bước cài đặt
-## Bước 1: clone source về máy
+## Bước 1: clone source về máy sau đó cài nodejs
 git clone https://github.com/optimus0701/se2022-8.3.git
 ## Bước 2: vào thư mục ReacNative/MyShopee chạy npm install để cài thư viện
 ## Bước 3: vào thư mục Resouces/saleapp/ cài thư viện cần thiết của python
