@@ -10,6 +10,7 @@ import { MainScreen } from './MainScreen';
 import { OrderScreen } from './OrderScreen';
 
 import * as SecureStore from "expo-secure-store";
+import { UserScreen } from './UserScreen';
 
 const Stack = createNativeStackNavigator();
 

@@ -20,20 +20,24 @@ export function UserScreen({ navigation }) {
       </View>
 
       <View style={styles.viewOptions}>
-        <View style={styles.cart}>
-          <Image style={styles.imageOptions}
-            source={require('./assets/cart.png')}></Image>
-          <Text style={{ fontSize: 12, marginLeft: 10 }}>Giỏ Hàng</Text>
-        </View>
+        <TouchableWithoutFeedback onPress={() => {
+          navigation.navigate('Order');
+        }}>
+          <View style={styles.cart}>
+            <Image style={styles.imageOptions}
+              source={require('./assets/cart.png')}></Image>
+            <Text style={{ fontSize: 12, marginLeft: 10 }}>Giỏ Hàng</Text>
+          </View>
+        </TouchableWithoutFeedback>
         <View style={styles.order}>
           <Image style={styles.imageOptions}
             source={require('./assets/fast-delivery.png')}></Image>
           <Text style={{ fontSize: 12 }}>Đang Vận Chuyển</Text>
         </View>
       </View>
-      <View style={{paddingTop: 200, justifyContent: 'center', alignContent: 'center', flexDirection: 'row'}}>
-        <View style={{width: 100}}>
-          <Button title='LOGOUT'/>
+      <View style={{ paddingTop: 200, justifyContent: 'center', alignContent: 'center', flexDirection: 'row' }}>
+        <View style={{ width: 100 }}>
+          <Button title='LOGOUT' />
         </View>
       </View>
     </SafeAreaView>

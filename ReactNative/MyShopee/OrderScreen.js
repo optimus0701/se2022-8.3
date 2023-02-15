@@ -5,8 +5,7 @@ import {
 } from 'react-native';
 import { URL } from "./Url";
 
-export function OrderScreen({route, navigation}) {
-    const { item } = route.params;
+export function OrderScreen({navigation}) {
     return(
         <View>
             <Text>{'' + item.price}</Text>

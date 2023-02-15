@@ -87,13 +87,14 @@ async function postLogin(username, password) {
   return await axios.request(opts);
 }
 
-function login(email, password) {
-  if(isValidInput(email, password)) {
-    postLogin(email, password)
+function login(username, password) {
+  if(isValidInput(username, password)) {
+    postLogin(username, password)
     .then((data) => {
       const res = JSON.parse(data.data);
       if (res.status === 'success') {
         SecureStore.setItemAsync('is_login', 'true');
+        SecureStore.setItemAsync('current_user', username);
         console.log('login success');
         ToastAndroid.show('success', ToastAndroid.SHORT);
         changeScreen(navi, 'Main');
