@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { LoginScreen } from './LoginScreen';
 import { ForgetPasswordScreen } from './ForgetPasswordScreen';
 import { SignUpScreen } from './SignUpScreen';
-import { HomeScreen } from './HomeScreen';
+import { ProductDetailScreen } from './ProductDetailScreen'
 import { MainScreen } from './MainScreen';
 
 import * as SecureStore from "expo-secure-store";
@@ -38,6 +38,7 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName='Main'>
           <Stack.Screen name="Main" component={MainScreen} />
+          <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     );

@@ -28,7 +28,7 @@ export function HomeScreen({ navigation }) {
 
     const ItemRender = ({ item }) => (
         <TouchableWithoutFeedback onPress={() => {
-            console.log('abc');
+            navigation.navigate('ProductDetail', {item});
         }}>
             <View style={styleSheet.listItem}>
             <Image
@@ -54,7 +54,6 @@ export function HomeScreen({ navigation }) {
                 data={JSON_DATA}
                 renderItem={({ item }) => <ItemRender item={item} />}
                 numColumns={3}
-                keyExtractor={item => item.id}
             />
 
         </SafeAreaView>
