@@ -7,6 +7,13 @@ import { URL } from "./Url";
 import * as SecureStore from "expo-secure-store";
 
 export function UserScreen({ navigation }) {
+  const [current_user, onChange] = React.useState('admin');
+
+  SecureStore.getItemAsync('current_user').then(current_user => {
+    if (current_user) {
+      onChange(current_user);
+    }
+  });
   return (
     <SafeAreaView style={styles.mainContainer}>
       <View style={styles.viewProfile}>
@@ -14,37 +21,27 @@ export function UserScreen({ navigation }) {
           <Image style={styles.imageProfile}
             source={require('./assets/profile.png')}></Image>
           <View>
-            <Text style={styles.itemText}>Username</Text>
-            <Text style={styles.itemText}>Email</Text>
+            <Text style={styles.itemText}>{current_user} </Text>
           </View>
-        </View>
-      </View>
-
-      <View style={styles.viewOptions}>
-        <TouchableWithoutFeedback onPress={() => {
-          navigation.navigate('Order');
-        }}>
-          <View style={styles.cart}>
-            <Image style={styles.imageOptions}
+          <TouchableWithoutFeedback onPress={() => {
+            navigation.navigate('Order', {current_user});
+          }}>
+            <Image style={styles.imageDelivery}
               source={require('./assets/cart.png')}></Image>
-            <Text style={{ fontSize: 12, marginLeft: 10 }}>Giỏ Hàng</Text>
-          </View>
-        </TouchableWithoutFeedback>
-        <View style={styles.order}>
-          <Image style={styles.imageOptions}
-            source={require('./assets/fast-delivery.png')}></Image>
-          <Text style={{ fontSize: 12 }}>Đang Vận Chuyển</Text>
+          </TouchableWithoutFeedback>
         </View>
       </View>
-      <View style={{ paddingTop: 200, justifyContent: 'center', alignContent: 'center', flexDirection: 'row' }}>
-        <View style={{ width: 100 }}>
-          <Button title='LOGOUT' onPress={() => {
-            SecureStore.setItemAsync('is_login', 'false');
-            navigation.reset({
-              index: 0,
-              routes: [{ name: 'Login' }],
-            });
-          }} />
+      <View style={styles.viewOptions}>
+        <View style={{marginLeft: 130, marginTop: 10}}>
+          <View style={{width: 100}}>
+            <Button title='Logout' onPress={() => {
+              SecureStore.setItemAsync('is_login', 'false');
+              navigation.reset({
+                index: 0,
+                routes: [{ name: 'Login' }],
+              });
+            }}/>
+          </View>
         </View>
       </View>
     </SafeAreaView>
@@ -70,24 +67,15 @@ const styles = StyleSheet.create({
   },
   itemText: {
     paddingLeft: 10,
-    paddingTop: 6,
+    paddingTop: 10,
   },
   viewOptions: {
     flexDirection: 'row',
   },
-  imageOptions: {
+  imageDelivery: {
     width: 60,
     height: 60,
+    marginLeft: 120,
   },
-  cart: {
-    paddingLeft: 60,
-    justifyContent: 'center',
-    alignContent: 'center',
-  },
-  order: {
-    paddingLeft: 120,
-    justifyContent: 'center',
-    alignContent: 'center',
-    paddingTop: 5,
-  }
+
 });

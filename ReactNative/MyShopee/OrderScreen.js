@@ -7,7 +7,7 @@ import { URL } from "./Url";
 import * as SecureStore from "expo-secure-store";
 
 
-export function OrderScreen({route, navigation }) {
+export function OrderScreen({ route, navigation }) {
 
     const { current_user } = route.params;
 
@@ -33,9 +33,17 @@ export function OrderScreen({route, navigation }) {
     }, []);
 
 
+
+
     const ItemRender = ({ item }) => (
         <View style={styleSheet.listItem}>
-            <Text style={styleSheet.itemText}> {item['address']} </Text>
+            <Text style={styleSheet.itemText}> Người Nhận: {item['username']} </Text>
+            <Text style={styleSheet.itemText}> Địa chỉ: {item['address']} </Text>
+            <Text style={styleSheet.itemText}> Số điện thoại: {item['phone']} </Text>
+            <Text style={styleSheet.itemText}> Tên Sản Phẩm: {item['product']} </Text>
+            <Text style={styleSheet.itemText}> Trạng Thái: {
+                getStatus(item['status'])
+            } </Text>
         </View>
     );
 
@@ -57,6 +65,18 @@ export function OrderScreen({route, navigation }) {
         </SafeAreaView>
     );
 }
+
+function getStatus(number) {
+    if(number === 0) {
+        return 'Chờ xác nhận'
+    } else if(number === 1) {
+        return 'Đang giao hàng'
+    } else if(number === 2) {
+        return 'Đã giao hàng'
+    } else {
+        return 'Lỗi'
+    }
+}
 const styleSheet = StyleSheet.create({
     MainContainer: {
         flex: 1,
@@ -71,9 +91,7 @@ const styleSheet = StyleSheet.create({
     itemText: {
         fontSize: 12,
         color: 'black',
-        width: 105,
         flex: 1,
-        textAlign: 'center'
     },
     itemImage: {
         width: 105,
