@@ -28,6 +28,9 @@
     <li>
         <a href="#so-sánh-react-native-với-flutter">So sánh React Native với Flutter</a>
     </li>
+    <li>
+        <a href="#ứng-dụng-shopee-fake">Ứng dụng Shopee Fake</a>
+    </li>
   </ol>
 </details>
 
